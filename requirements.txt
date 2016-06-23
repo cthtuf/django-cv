@@ -1,1 +1,6 @@
 Django==1.9.7
+contentful.py==0.9.3
+enum34==1.1.1
+python-dateutil==2.3
+requests==2.4.3
+six==1.10.0
