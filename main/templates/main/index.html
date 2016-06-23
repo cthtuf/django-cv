@@ -1,0 +1,13 @@
+{% if sliderRecords %}
+	<ul>
+	{% for sliderRecord in sliderRecords %}
+		<li>{{ sliderRecord.header }}</li>
+		<li>{{ sliderRecord.subHeader }}</li>
+		<li>{{ sliderRecord.slogan }}</li>
+		<li>{{ sliderRecord.imageLink }} </li>
+		<hr>
+	{% empty %}
+		There are no records
+	{% endfor %}
+	</ul>
+{% endif %}
