@@ -1,13 +1,205 @@
-{% if sliderRecords %}
+MainSlider<br>
+{% if mainSlider %}
 	<ul>
-	{% for sliderRecord in sliderRecords %}
-		<li>{{ sliderRecord.header }}</li>
-		<li>{{ sliderRecord.subHeader }}</li>
-		<li>{{ sliderRecord.slogan }}</li>
-		<li>{{ sliderRecord.imageLink }} </li>
-		<hr>
+	{% for slide in mainSlider %}
+		<li>{{ slide.header }}</li>
+		<li>{{ slide.subHeader }}</li>
+		<li>{{ slide.slogan }}</li>
+		<li>{{ slide.image.fields}}</li>
+		<li><img src="{{ slide.image.url }}" alt="{{ slide.image.fields.description }}" /></li>
+		<br>
 	{% empty %}
 		There are no records
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+AboutMe<br>
+
+{% if aboutMe %}
+	<ul>
+		<li>{{ aboutMe.fullName }}</li>
+		<li>{{ aboutMe.birthday }}</li>
+		<li>{{ aboutMe.birthPlace }}</li>
+		<li>{{ aboutMe.hobbies }}</li>
+		<li>
+			<od>
+			{% for photo in aboutMe.photos %}
+				<dd>{{ photo.fields }}</dd>
+			{% endfor %}
+			</od>
+		</li>
+		<li>{{ aboutMe.address }}</li>
+		<li>{{ aboutMe.phone }}</li>
+		<li>{{ aboutMe.email }}</li>
+		<li>{{ aboutMe.website }}</li>
+		<li>{{ aboutMe.shortInfo }}</li>
+		<li>{{ aboutMe.longInfo }}</li>
+	</ul>
+{% endif %}
+
+<hr><hr>
+Awards<br>
+
+{% if awards %}
+	<ul>
+	{% for record in awards %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.title }}</li>
+		<li>{{ record.companyName }}</li>
+		<li>{{ record.date }}</li>
+		<li>{{ record.image.fields }}</li>
+		<br>
+	{% empty %}
+		<li>No awards</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+CommonSettings<br>
+
+{% if commonSettings %}
+	<ul>
+		<li>{{ commonSettings.descriptionSkills }}</li>
+		<li>{{ commonSettings.descriptionEducation }}</li>
+		<li>{{ commonSettings.descriptionProcess }}</li>
+		<li>{{ commonSettings.descriptionWorkExperience }}</li>
+		<li>{{ commonSettings.descriptionServices }}</li>
+		<li>{{ commonSettings.descriptionPortfolio }}</li>
+		<li>{{ commonSettings.descriptionAwards }}</li>
+		<li>{{ commonSettings.descriptionDownloadCv }}</li>
+		<li>{{ commonSettings.descriptionGetInTouch }}</li>
+		<li>{{ commonSettings.video.fields }}</li>
+		<li>{{ commonSettings.contactAddress }}</li>
+		<li>{{ commonSettings.contactPhone }}</li>
+		<li>{{ commonSettings.contactEmail }}</li>
+		<li>{{ commonSettings.contactWebsite }}</li>
+		<li>{{ commonSettings.socialFacebook }}</li>
+		<li>{{ commonSettings.socialLinkedIn }}</li>
+		<li>{{ commonSettings.socialVk }}</li>
+		<li>{{ commonSettings.socialGooglePlus }}</li>
+	</ul>
+{% endif %}
+
+<hr><hr>
+Education<br>
+
+{% if education %}
+	<ul>
+	{% for record in education %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.grade }}</li>
+		<li>{{ record.universityName }}</li>
+		<li>{{ record.country }}</li>
+		<li>{{ record.datePeriod }}</li>
+		<li>{{ record.description }}</li>
+		<br>
+	{% empty %}
+		<li>No education</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+Portfolio<br>
+
+{% if portfolio %}
+	<ul>
+	{% for record in portfolio %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.header }}</li>
+		<li>{{ record.subHeader }}</li>
+		<li>{{ record.image }}</li>
+		<br>
+	{% empty %}
+		<li>No portfolio</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+Process<br>
+
+{% if process %}
+	<ul>
+	{% for record in process %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.name }}</li>
+		<li>{{ record.icon }}</li>
+		<br>
+	{% empty %}
+		<li>No processes</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+Service<br>
+
+{% if service %}
+	<ul>
+	{% for record in service %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.name }}</li>
+		<li>{{ record.description }}</li>
+		<li>{{ record.icon }}</li>
+		<br>
+	{% empty %}
+		<li>No services</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+Skill<br>
+
+{% if skill %}
+	<ul>
+	{% for record in skill %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.name }}</li>
+		<li>{{ record.percent }}</li>
+		<br>
+	{% empty %}
+		<li>No skills</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+Testimonials<br>
+
+{% if testimonials %}
+	<ul>
+	{% for record in testimonials %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.name }}</li>
+		<li>{{ record.companyName }}</li>
+		<li>{{ record.text }}</li>
+		<br>
+	{% empty %}
+		<li>No testimonials</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+<hr><hr>
+WorkExperience<br>
+
+{% if workExperience %}
+	<ul>
+	{% for record in workExperience %}
+		<li>{{ record.index }}</li>
+		<li>{{ record.companyName }}</li>
+		<li>{{ record.position }}</li>
+		<li>{{ record.datePeriod }}</li>
+		<li>{{ record.description }}</li>
+		<li>{{ record.companyUrl }}</li>
+		<br>
+	{% empty %}
+		<li>No work experience</li>
 	{% endfor %}
 	</ul>
 {% endif %}
