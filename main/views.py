@@ -51,3 +51,6 @@ def index(request):
 		}
 	)
 	return HttpResponse(template.render(context))
+
+def feedback(request):
+	return '{ success : 1 }'

@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content="">
+    <meta name="author" content="Sergey Yarlov">
+    <link rel="shortcut icon" href="{% static 'main/img/ico/favicon.ico' %}">
+    {% block title %}<title>Sergey Yarlov - IT Specialist</title>{% endblock %}
+    <!-- ALL STYLESHEETS -->
+    <link href="{% static 'main/css/all-stylesheet.css' %}" rel="stylesheet" type="text/css">
+    <!-- ALL COLORED STYLESHEETS -->
+    <link href="{% static 'main/css/colors/greyish-blue.css' %}" rel="alternate stylesheet" type="text/css" title="greyish-blue">
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    {% block header_style %}
+    {% endblock %}
+{% endblock %}
+</head>
+<body>
+{% block page %}
+	{% block content %}
+	{% endblock %}
+{% endblock %}
+
+
+{% block footer %}
+	<section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                    	{% block copyright %}
+                        <!-- Copyright Starts -->
+                        <div class="desc animated" data-animation="fadeInUp" data-animation-delay="200"><i class="fa fa-heart"></i><br>
+							© 2014. Personal ONE.<br>
+                            Tempor sit amet, ante. Donec eu libero.
+                        </div>
+                        <!-- Copyright Ends -->
+                        {% endblock %}
+						<div class="line"></div>
+                        <!-- ToTop Starts -->
+                        <a href="#" class="scrollup animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-angle-double-up"></i></a> 
+                        <!-- ToTop Ends -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.FOOTER --> 
+        
+        <!-- JAVASCRIPTS STARTS
+            ========================================================================= --> 
+        <!-- Bootstrap --> 
+        <script src="{% static 'main/js/jquery-1.11.0.min.js' %}"></script> 
+        <script src="{% static 'main/js/bootstrap.min.js' %}"></script> 
+        {% block footer_scripts %}
+        {% endblock %}
+{% endblock %}
+</body>

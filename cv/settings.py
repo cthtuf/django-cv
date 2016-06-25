@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -56,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'main/templates'),
+            #os.path.join(BASE_DIR, 'main/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.static',
             ],
         },
     },
@@ -121,3 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATICFILES_DIRS = ( os.path.join('static'), )
+
+#STATICFILES_FINDERS = [
+#    "django.contrib.staticfiles.finders.FileSystemFinder",
+#    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+#]
