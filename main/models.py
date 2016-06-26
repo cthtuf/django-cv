@@ -10,7 +10,8 @@ class MainSlider(Entry):
 	image = Field(Link)
 	header = Field(Text)
 	subHeader = Field(Text)
-	slogan = Field(Text)
+	firstSlogan = Field(Text)
+	secondSlogan = Field(Text)
 
 class AboutMe(Entry):
 	__content_type__ = 'aboutMe'
