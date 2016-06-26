@@ -209,6 +209,12 @@ WorkExperience<br>
 
 {% endcomment %}
 
+{% block header_styles %}
+<style>
+	#myskills { background-image: url({{commonData.backgroundSkills.url}});}
+</style>
+{% endblock %}
+
 {% block content %}
 		{% if mainSlider %}
 		<!-- SLIDER STARTS ========================================================================= -->
@@ -325,7 +331,6 @@ WorkExperience<br>
                             <li><a href="#services" data-toggle="collapse" data-target=".navbar-collapse">SERVICES</a></li>
                             <li><a href="#portfolio" data-toggle="collapse" data-target=".navbar-collapse">PORTFOLIO</a></li>
                             <li><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse">CONTACT</a></li>
-                            <li><a href="http://www.themeforest.net/item/this-one-one-page-responsive-website-template/7236268?ref=alia" class="external" target="_blank" data-toggle="collapse" data-target=".navbar-collapse">PURCHASE</a></li>
                         </ul>
                     </div>
                     <!--/.nav-collapse --> 
@@ -340,54 +345,56 @@ WorkExperience<br>
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">ABOUT ME</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-briefcase"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="100">ABOUT ME</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-briefcase"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="400">{{ commonData.aboutShortDescription }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Row 1 Starts -->
                 <div class="row">
                     <!-- Left Column Starts -->
-                    <div class="col-md-3 personal-info col-left animated" data-animation="fadeInRight" data-animation-delay="1700">
+                    <div class="col-md-3 personal-info col-left animated" data-animation="fadeInRight" data-animation-delay="300">
                         <div class="line1">FULL NAME<br>
-                            <span class="line2">JOHN DOE</span> 
+                            <span class="line2">{{ commonData.aboutFullName}}</span> 
                         </div>
                         <div class="line1">BIRTHDAY<br>
-                            <span class="line2">7 FEB, 1980</span> 
+                            <span class="line2">{{ commonData.aboutBirthday }}</span> 
                         </div>
                         <div class="line1">BIRTH PLACE<br>
-                            <span class="line2">MELBOURNE, AUSTRALIA</span> 
+                            <span class="line2">{{ commonData.aboutBirthPlace }}</span> 
                         </div>
                         <div class="line1">HOBBIES<br>
-                            <span class="line2">ART, READING, MOVIES</span> 
+                            <span class="line2">{{ commonData.aboutHobbies }}</span> 
                         </div>
                     </div>
                     <!-- Left Column Ends -->
                     <!-- Middle Column Starts -->
                     <div class="col-md-6">
-                        <div class="col-md-8 col-md-offset-2 animated" data-animation="fadeInUp" data-animation-delay="2000">
+                        <div class="col-md-8 col-md-offset-2 animated" data-animation="fadeInUp" data-animation-delay="300">
                             <div class="pic owl-carousel" id="my-pic-carousel">
-                                <div><img src="{{ STATIC_URL }}main/img/about/1.jpg" class="img-responsive" alt=""></div>
-                                <div><img src="{{ STATIC_URL }}main/img/about/2.jpg" class="img-responsive" alt=""></div>
-                                <div><img src="{{ STATIC_URL }}main/img/about/3.jpg" class="img-responsive" alt=""></div>
+                            	{% for photo in commonData.aboutPhotos %}
+                            		{% if photo.url %}
+                                	<div><img src="{{ photo.url }}" class="img-responsive" alt="{{ photo.fields.description }}"></div>
+                                	{% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                     <!-- Middle Column Ends -->
                     <!-- Right Column Starts -->
-                    <div class="col-md-3 personal-info col-right animated" data-animation="fadeInLeft" data-animation-delay="1700">
+                    <div class="col-md-3 personal-info col-right animated" data-animation="fadeInLeft" data-animation-delay="300">
                         <div class="line1">ADDRESS<br>
-                            <span class="line2">MELBOURNE, AUSTRALIA</span> 
+                            <span class="line2">{{ commonData.aboutAddress }}</span> 
                         </div>
                         <div class="line1">PHONE<br>
-                            <span class="line2">+123-456-7890</span> 
+                            <span class="line2">{{ commonData.aboutPhone }}</span> 
                         </div>
                         <div class="line1">EMAIL<br>
-                            <span class="line2">JOHN@JOHNDOE.COM</span> 
+                            <span class="line2">{{ commonData.aboutEmail }}</span> 
                         </div>
                         <div class="line1">WEB<br>
-                            <span class="line2">WWW.JOHNDOE.COM</span> 
+                            <span class="line2">{{ commonData.aboutWebsite }}</span> 
                         </div>
                     </div>
                     <!-- Right Column Ends -->
@@ -395,8 +402,8 @@ WorkExperience<br>
                 <!-- Row 1 Ends --> 
                 <!-- Row 2 Starts -->
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3 animated" data-animation="fadeInUp" data-animation-delay="2200">
-                        <div class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.</div>
+                    <div class="col-md-6 col-md-offset-3 animated" data-animation="fadeInUp" data-animation-delay="300">
+                        <div class="intro">{{ commonData.aboutLongDescription }}</div>
                     </div>
                 </div>
                 <div>
@@ -416,50 +423,24 @@ WorkExperience<br>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">MY SKILLS</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-rocket"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-rocket"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSkills }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
-                <div class="owl-carousel animated" data-animation="fadeIn" data-animation-delay="1700" id="myskills-carousel">
+                {% if skill %}
+                <div class="owl-carousel animated" data-animation="fadeIn" data-animation-delay="300" id="myskills-carousel">
+                	{% for record in skill %}
                     <div class="items">
-                        <div id="donutchart1" data-percent="80"> </div>
+                        <div id="donutchart{{ record.index }}" data-percent="{{ record.persent }}"> </div>
                         <br>
-                        Web 
+                        {{ record.title }}
                     </div>
-                    <div class="items">
-                        <div id="donutchart2" data-percent="70"> </div>
-                        <br>
-                        Illustration 
-                    </div>
-                    <div class="items">
-                        <div id="donutchart3" data-percent="60"> </div>
-                        <br>
-                        Print 
-                    </div>
-                    <div class="items">
-                        <div id="donutchart4" data-percent="50"> </div>
-                        <br>
-                        Photography 
-                    </div>
-                    <div class="items">
-                        <div id="donutchart5" data-percent="40"> </div>
-                        <br>
-                        Media 
-                    </div>
-                    <div class="items">
-                        <div id="donutchart6" data-percent="30"> </div>
-                        <br>
-                        Photography 
-                    </div>
-                    <div class="items">
-                        <div id="donutchart7" data-percent="20"> </div>
-                        <br>
-                        Media 
-                    </div>
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="2200"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
+                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
                 <!-- Button Ends --> 
             </div>
         </section>
@@ -1148,14 +1129,9 @@ WorkExperience<br>
         <!-- Donut Chart --> 
         <script type="text/javascript" src="{% static 'main/js/progress-bars/jquery.donutchart.js' %}"></script> 
         <script>
-            $("#donutchart1").donutchart("animate");
-            $("#donutchart2").donutchart("animate");
-            $("#donutchart3").donutchart("animate");
-            $("#donutchart4").donutchart("animate");
-            $("#donutchart5").donutchart("animate");
-            $("#donutchart6").donutchart("animate");
-            $("#donutchart7").donutchart("animate");
-            $("#donutchart8").donutchart("animate");			
+        	{% for record in skill %}
+            	$("#donutchart{{ record.index }}").donutchart("animate");
+            {% endfor %}
         </script> 
         <!-- Retina --> 
         <script type="text/javascript" src="{% static 'main/js/retina/retina.js' %}"></script>

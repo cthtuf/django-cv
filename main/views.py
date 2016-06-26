@@ -11,9 +11,8 @@ def index(request):
 		'7f86a46952bf2432efe06a21ed02a3d481ec0924566ff1bd11be04822d936b12',
 		custom_entries= [
 			MainSlider,
-			AboutMe,
 			Awards,
-			CommonSettings,
+			CommonData,
 			Education,
 			Portfolio,
 			Process,
@@ -24,9 +23,8 @@ def index(request):
 		]
 	)
 	mainSlider = cfClient.fetch(MainSlider).all()
-	aboutMe = cfClient.fetch(AboutMe).first()
 	awards = cfClient.fetch(Awards).all()
-	commonSettings = cfClient.fetch(CommonSettings).first()
+	commonData = cfClient.fetch(CommonData).first()
 	education = cfClient.fetch(Education).all()
 	portfolio = cfClient.fetch(Portfolio).all()
 	process = cfClient.fetch(Process).all()
@@ -38,9 +36,8 @@ def index(request):
 	template = loader.get_template('main/index.html')
 	context = RequestContext(request, {
 		'mainSlider' : mainSlider,
-		'aboutMe' : aboutMe,
 		'awards' : awards,
-		'commonSettings' : commonSettings,
+		'commonData' : commonData,
 		'education' : education,
 		'portfolio' : portfolio,
 		'process' : process,

@@ -37,9 +37,20 @@ class Awards(Entry):
 	date = Field(Text)
 	image = Field(Link)
 
-class CommonSettings(Entry):
-	__content_type__ = 'commonSettings'
+class CommonData(Entry):
+	__content_type__ = 'commonData'
 
+	aboutFullName = Field(Text)
+	aboutBirthday = Field(Text)
+	aboutBirthPlace = Field(Text)
+	aboutHobbies = Field(Text)
+	aboutPhotos = Field(Link)
+	aboutAddress = Field(Text)
+	aboutPhone = Field(Text)
+	aboutEmail = Field(Text)
+	aboutWebsite = Field(Text)
+	aboutShortDescription = Field(Text)
+	aboutLongDescription = Field(Text)
 	descriptionSkills = Field(Text)
 	descriptionEducation = Field(Text)
 	descriptionProcess = Field(Text)
@@ -58,6 +69,9 @@ class CommonSettings(Entry):
 	socialLinkedIn = Field(Text)
 	socialVk = Field(Text)
 	socialGooglePlus = Field(Text)
+	backgroundSkills = Field(Link)
+	backgroundProcess = Field(Link)
+	backgroundServices = Field(Link)
 
 class Education(Entry):
 	__content_type__ = 'education'
@@ -96,7 +110,7 @@ class Skill(Entry):
 	__content_type__ = 'skill'
 
 	index = Field(Number)
-	name = Field(Text)
+	title = Field(Text)
 	persent = Field(Number)
 
 class Testimonials(Entry):
