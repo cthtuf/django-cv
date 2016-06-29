@@ -1,214 +1,5 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
-{% comment %}
-MainSlider<br>
-{% if mainSlider %}
-	<ul>
-	{% for slide in mainSlider %}
-		<li>{{ slide.header }}</li>
-		<li>{{ slide.subHeader }}</li>
-		<li>{{ slide.slogan }}</li>
-		<li>{{ slide.image.fields}}</li>
-		<li><img src="{{ STATIC_URL }}main/{{ slide.image.url }}" alt="{{ slide.image.fields.description }}" /></li>
-		<br>
-	{% empty %}
-		There are no records
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-AboutMe<br>
-
-{% if aboutMe %}
-	<ul>
-		<li>{{ aboutMe.fullName }}</li>
-		<li>{{ aboutMe.birthday }}</li>
-		<li>{{ aboutMe.birthPlace }}</li>
-		<li>{{ aboutMe.hobbies }}</li>
-		<li>
-			<od>
-			{% for photo in aboutMe.photos %}
-				<dd>{{ photo.fields }}</dd>
-			{% endfor %}
-			</od>
-		</li>
-		<li>{{ aboutMe.address }}</li>
-		<li>{{ aboutMe.phone }}</li>
-		<li>{{ aboutMe.email }}</li>
-		<li>{{ aboutMe.website }}</li>
-		<li>{{ aboutMe.shortInfo }}</li>
-		<li>{{ aboutMe.longInfo }}</li>
-	</ul>
-{% endif %}
-
-<hr><hr>
-Awards<br>
-
-{% if awards %}
-	<ul>
-	{% for record in awards %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.title }}</li>
-		<li>{{ record.companyName }}</li>
-		<li>{{ record.date }}</li>
-		<li>{{ record.image.fields }}</li>
-		<br>
-	{% empty %}
-		<li>No awards</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-CommonSettings<br>
-
-{% if commonSettings %}
-	<ul>
-		<li>{{ commonSettings.descriptionSkills }}</li>
-		<li>{{ commonSettings.descriptionEducation }}</li>
-		<li>{{ commonSettings.descriptionProcess }}</li>
-		<li>{{ commonSettings.descriptionWorkExperience }}</li>
-		<li>{{ commonSettings.descriptionServices }}</li>
-		<li>{{ commonSettings.descriptionPortfolio }}</li>
-		<li>{{ commonSettings.descriptionAwards }}</li>
-		<li>{{ commonSettings.descriptionDownloadCv }}</li>
-		<li>{{ commonSettings.descriptionGetInTouch }}</li>
-		<li>{{ commonSettings.video.fields }}</li>
-		<li>{{ commonSettings.contactAddress }}</li>
-		<li>{{ commonSettings.contactPhone }}</li>
-		<li>{{ commonSettings.contactEmail }}</li>
-		<li>{{ commonSettings.contactWebsite }}</li>
-		<li>{{ commonSettings.socialFacebook }}</li>
-		<li>{{ commonSettings.socialLinkedIn }}</li>
-		<li>{{ commonSettings.socialVk }}</li>
-		<li>{{ commonSettings.socialGooglePlus }}</li>
-	</ul>
-{% endif %}
-
-<hr><hr>
-Education<br>
-
-{% if education %}
-	<ul>
-	{% for record in education %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.grade }}</li>
-		<li>{{ record.universityName }}</li>
-		<li>{{ record.country }}</li>
-		<li>{{ record.datePeriod }}</li>
-		<li>{{ record.description }}</li>
-		<br>
-	{% empty %}
-		<li>No education</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-Portfolio<br>
-
-{% if portfolio %}
-	<ul>
-	{% for record in portfolio %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.header }}</li>
-		<li>{{ record.subHeader }}</li>
-		<li>{{ record.image }}</li>
-		<br>
-	{% empty %}
-		<li>No portfolio</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-Process<br>
-
-{% if process %}
-	<ul>
-	{% for record in process %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.name }}</li>
-		<li>{{ record.icon }}</li>
-		<br>
-	{% empty %}
-		<li>No processes</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-Service<br>
-
-{% if service %}
-	<ul>
-	{% for record in service %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.name }}</li>
-		<li>{{ record.description }}</li>
-		<li>{{ record.icon }}</li>
-		<br>
-	{% empty %}
-		<li>No services</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-Skill<br>
-
-{% if skill %}
-	<ul>
-	{% for record in skill %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.name }}</li>
-		<li>{{ record.percent }}</li>
-		<br>
-	{% empty %}
-		<li>No skills</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-Testimonials<br>
-
-{% if testimonials %}
-	<ul>
-	{% for record in testimonials %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.name }}</li>
-		<li>{{ record.companyName }}</li>
-		<li>{{ record.text }}</li>
-		<br>
-	{% empty %}
-		<li>No testimonials</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-<hr><hr>
-WorkExperience<br>
-
-{% if workExperience %}
-	<ul>
-	{% for record in workExperience %}
-		<li>{{ record.index }}</li>
-		<li>{{ record.companyName }}</li>
-		<li>{{ record.position }}</li>
-		<li>{{ record.datePeriod }}</li>
-		<li>{{ record.description }}</li>
-		<li>{{ record.companyUrl }}</li>
-		<br>
-	{% empty %}
-		<li>No work experience</li>
-	{% endfor %}
-	</ul>
-{% endif %}
-
-{% endcomment %}
-
 {% block header_styles %}
 <style>
 	#myskills { background-image: url({{commonData.backgroundSkills.url}});}
@@ -453,89 +244,34 @@ WorkExperience<br>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">EDUCATION</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-book"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-book"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commondData.descriptionEducation }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Education Timeline Starts -->
-                <div class="education-timeline animated" data-animation="fadeInUp" data-animation-delay="1700">
+                <div class="education-timeline animated" data-animation="fadeInUp" data-animation-delay="300">
+                    {% for record in education %}
                     <!-- Row 1 Starts -->
                     <div class="row education">
                         <div class="col-md-6 col-xs-6">
                             <div class="divider"><i class="fa fa-book"></i></div>
                             <div class="col-left">
-                                <div class="programe">MASTER OF COMPUTER SCIENCE</div>
-                                <div class="university"><strong>UNIVERSITY NAME</strong><br>
-                                    AUSTRALIA
+                                <div class="programe">{{ record.grade }}</div>
+                                <div class="university"><strong>{{ record.universityName }}</strong><br>
+                                    {{ record.country }}
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xs-6">
                             <div class="col-right">
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                                <div class="duration">{{ record.datePeriod }}</div>
+                                <div class="description">{{ record.description }}</div>
                             </div>
                         </div>
                     </div>
                     <!-- Row 1 Ends --> 
-                    <!-- Row 2 Starts -->
-                    <div class="row education">
-                        <div class="col-md-6 col-xs-6">
-                            <div class="divider"><i class="fa fa-book"></i></div>
-                            <div class="col-left">
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-right">
-                                <div class="programe">MASTER OF COMPUTER SCIENCE</div>
-                                <div class="university"><strong>UNIVERSITY NAME</strong><br>
-                                    AUSTRALIA
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Row 2 Ends --> 
-                    <!-- Row 3 Starts -->
-                    <div class="row education">
-                        <div class="col-md-6 col-xs-6">
-                            <div class="divider"><i class="fa fa-book"></i></div>
-                            <div class="col-left">
-                                <div class="programe">MASTER OF COMPUTER SCIENCE</div>
-                                <div class="university"><strong>UNIVERSITY NAME</strong><br>
-                                    AUSTRALIA
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-right">
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Row 3 Ends --> 
-                    <!-- Row 4 Starts -->
-                    <div class="row education">
-                        <div class="col-md-6 col-xs-6">
-                            <div class="divider"><i class="fa fa-book"></i></div>
-                            <div class="col-left">
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-right">
-                                <div class="programe">MASTER OF COMPUTER SCIENCE</div>
-                                <div class="university"><strong>UNIVERSITY NAME</strong><br>
-                                    AUSTRALIA
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Row 4 Ends --> 
+                    {% endfor %}
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
@@ -553,53 +289,25 @@ WorkExperience<br>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">PROCESS</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-cogs"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-cogs"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionProcess }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Processes Starts -->
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="1700">
+                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
                     <!-- Process 1 -->
+                    {% for record in process %}
                     <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa fa-lightbulb-o"></i><br>
-                            IDEA
+                        <div class="items"><i class="fa {{ record.icon }}"></i><br>
+                            {{ record.name }}
                         </div>
                     </div>
-                    <!-- Process 2 -->
-                    <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa fa-cogs"></i><br>
-                            CONCEPT
-                        </div>
-                    </div>
-                    <!-- Process 3 -->
-                    <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa fa-tint"></i><br>
-                            DESIGN
-                        </div>
-                    </div>
-                    <!-- Process 4 -->
-                    <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa fa-code"></i><br>
-                            DEVELOP
-                        </div>
-                    </div>
-                    <!-- Process 5 -->
-                    <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa fa-bug"></i><br>
-                            TEST
-                        </div>
-                    </div>
-                    <!-- Process 6 -->
-                    <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa fa-rocket"></i><br>
-                            LAUNCH
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <!-- Processes Ends -->
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="2200"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
+                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
                 <!-- Button Ends --> 
             </div>
         </section>
@@ -612,69 +320,29 @@ WorkExperience<br>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">WORK EXPERIENCE</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-tags"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-tags"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionWorkExperience }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Education Timeline Starts -->
-                <div class="work-experience-timeline animated" data-animation="fadeInUp" data-animation-delay="1700">
-                    <!-- Row 1 Starts -->
+                <div class="work-experience-timeline animated" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="row">
                         <!-- Left Column Starts -->
+                        {% for record in workExperience %}
                         <div class="col-md-6 col-xs-6">
-                          <div class="col-left">
+                          <div class="{% if forloop.counter|divisibleby:2 %}col-left{% else %}col-right{% endif %}">
                                 <div class="arrow"></div>
-                                <div class="company-name">THEME FOREST</div>
-                            	<div class="designation">DEVELOPER</div>
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam. feugiat vitae.</div>
-                                <div class="url"><a href="#">www.themeforest.net</a></div>                                
+                                <div class="company-name">{{ record.companyName }}</div>
+                            	<div class="designation">{{ record.position }}</div>
+                                <div class="duration">{{ record.datePeriod }}</div>
+                                <div class="description">{{ record.description }}</div>
+                                <div class="url"><a href="#">{{ record.companyUrl }}</a></div>                                
                             </div>
                         </div>
+                        {% endfor %}
                         <!-- Left Column Ends --> 
-                        <!-- Right Column Starts -->
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-right">
-                                <div class="arrow"></div>
-                                <div class="company-name">GRAPHIC RIVER</div>
-                                <div class="designation">GRAPHIC DESIGNER</div>
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam. feugiat vitae.</div>
-                                <div class="url"><a href="#">www.graphicriver.com</a></div>
-                            </div>
-                        </div>
-                        <!-- Right Column Starts --> 
                     </div>
-                    <!-- Row 1 Ends --> 
-                    <!-- Row 2 Starts -->
-                    <div class="row">
-                        <!-- Left Column Starts -->
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-left">
-                                <div class="arrow"></div>
-                                <div class="company-name">VIDEO HIVE</div>
-                                <div class="designation">ANIMATOR</div>
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam. feugiat vitae.</div>
-                                <div class="url"><a href="#">www.videohive.net</a></div>
-                            </div>
-                        </div>
-                        <!-- Left Column Ends --> 
-                        <!-- Right Column Starts -->
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-right">
-                                <div class="arrow"></div>
-                                <div class="company-name">PHOTO DUNE</div>
-                                <div class="designation">PHOTOGRAPHER</div>
-                                <div class="duration">FEB 2012 - DEC 2014</div>
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam. feugiat vitae.</div>
-                                <div class="url"><a href="#">www.photodune.net</a></div>
-                            </div>
-                        </div>
-                        <!-- Right Column Starts --> 
-                    </div>
-                    <!-- Row 2 Ends --> 
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
@@ -692,42 +360,24 @@ WorkExperience<br>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">SERVICES</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-heart"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-heart"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionServices }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Services Carousel Starts -->
-                <div class="owl-carousel animated" data-animation="fadeInUp" data-animation-delay="1700" id="services-carousel">
+                <div class="owl-carousel animated" data-animation="fadeInUp" data-animation-delay="300" id="services-carousel">
                     <!-- Services 1 Starts -->
+                    {% for record in service %}
                     <div class="items">
-                        <div class="icon"><i class="fa fa-camera"></i></div>
-                        <div class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+                        <div class="icon"><i class="fa {{ record.icon }}"></i></div>
+                        <div class="description">{{ record.description }}</div>
                     </div>
-                    <!-- Services 2 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-rocket"></i></div>
-                        <div class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
-                    </div>
-                    <!-- Services 3 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-shield"></i></div>
-                        <div class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
-                    </div>
-                    <!-- Services 4 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-video-camera"></i></div>
-                        <div class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
-                    </div>
-                    <!-- Services 5 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-book"></i></div>
-                        <div class="description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <!-- Services Carousel Starts -->
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="2200"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
+                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
                 <!-- Button Ends --> 
             </div>
         </section>
@@ -740,20 +390,20 @@ WorkExperience<br>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">PORTFOLIO</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-thumbs-up"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-thumbs-up"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionPorfolio }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Portfolio Nav Starts -->
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="1700">
+                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
                         <div id="options">
                             <ul id="filters" class="option-set clearfix" data-option-key="filter">
                                 <li><a href="#filter" data-option-value="*" class="selected">ALL</a></li>
-                                <li><a href="#filter" data-option-value=".web">WEB</a></li>
-                                <li><a href="#filter" data-option-value=".photos">PHOTOGRAPHY</a></li>
-                                <li><a href="#filter" data-option-value=".videos">VIDEOS</a></li>
+                                {% for record in portfolioTypes %}
+                                <li><a href="#filter" data-option-value=".{{ record.portfolioTypes|cut:" " }}">{{ record.title }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -765,55 +415,15 @@ WorkExperience<br>
                 <!-- AJAX Portfolio Details --> 
                 <!-- Portfolio Thumbs Starts -->
                 <div class="container"> 
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="2200" id="container-thumbs">
+                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300" id="container-thumbs">
                     <!-- Portfolio Item 1 Starts -->
+                    {% for record in portfolio %}
                     <div class="col-xs-12 col-sm-6 col-md-3 items photos">
-                        <div class="image" data-project="portfolio-pages/standard-page-1.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/1.jpg" class="img-responsive" alt=""><span class="zoom"><span><i class="fa fa-picture-o"></i></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Photo</div>
+                        <div class="image" data-project="{{ record.link }}"><a href="#" class="overlayzoom"><img src="{{ record.image.url }}" class="img-responsive" alt="{{ record.image.fields.description }}"><span class="zoom"><span><i class="fa fa-picture-o"></i></span></span></a></div>
+                        <div class="heading">{{ record.header }}</div>
+                        <div class="category">{{ record.portfolioTypes }}</div>
                     </div>
-                    <!-- Portfolio Item 2 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items videos">
-                        <div class="image" data-project="portfolio-pages/vimeo-page.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/2.jpg" class="img-responsive" alt=""><span class="zoom"><span><i class="fa fa-video-camera"></i></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Vimeo Vidoe</div>
-                    </div>
-                    <!-- Portfolio Item 3 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items web">
-                        <div class="image" data-project="portfolio-pages/gallery-page.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/3.jpg" class="img-responsive" alt=""><span class="zoom"><span><i class="fa fa-heart"></i></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Photos Gallery</div>
-                    </div>
-                    <!-- Portfolio Item 4 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items photos">
-                        <div class="image" data-project="portfolio-pages/gallery-page.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/4.jpg" class="img-responsive" alt=""><span class="zoom"><span><i class="fa fa-picture-o"></i></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Photos Gallery</div>
-                    </div>
-                    <!-- Portfolio Item 4 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items web">
-                        <div class="image" data-project="portfolio-pages/standard-page-2.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/5.jpg" class="img-responsive" alt=""><span class="zoom"><i class="fa fa-heart"></i><span></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Photo</div>
-                    </div>
-                    <!-- Portfolio Item 5 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items videos">
-                        <div class="image" data-project="portfolio-pages/youtube-page.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/6.jpg" class="img-responsive" alt=""><span class="zoom"><span><i class="fa fa-video-camera"></i></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">youtube video</div>
-                    </div>
-                    <!-- Portfolio Item 6 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items photos">
-                        <div class="image" data-project="portfolio-pages/gallery-page.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/7.jpg" class="img-responsive" alt=""><span class="zoom"><span><i class="fa fa-picture-o"></i></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Photos Gallery</div>
-                    </div>
-                    <!-- Portfolio Item 7 Starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-3 items web">
-                        <div class="image" data-project="portfolio-pages/standard-page-1.html"><a href="#" class="overlayzoom"><img src="{{ STATIC_URL }}main/img/portfolio/8.jpg" class="img-responsive" alt=""><span class="zoom"><i class="fa fa-heart"></i><span></span></span></a></div>
-                        <div class="heading">Habitant</div>
-                        <div class="category">Web</div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <!-- Portfolio Thumbs Ends --> 
                 <!-- Button Starts -->
@@ -824,49 +434,54 @@ WorkExperience<br>
         <!-- /.PORTFOLIO --> 
         <!-- VIDEO STARTS
             ========================================================================= -->
+        {% if commonData.video %}
         <section id="video" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">VIDEO</div>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="700">HTML5 / SELF HOSTED VIDEO</div>
+                        {#<div class="description animated" data-animation="fadeIn" data-animation-delay="300">HTML5 / SELF HOSTED VIDEO</div>#}
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Contents Starts --> 
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="1200">
+                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
-                        <div class="play"><a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.cvideo/80629469" data-toggle="lightbox" data-gallery="mixedgallery" data-title="Pellentesque habitant morbi" data-footer="Aliquam erat volutpat"> <i class="fa fa-play-circle-o"></i></a></div>
-                        <div class="signature"><img src="{{ STATIC_URL }}main/img/signature/signature.png" style="max-width:100%" alt=""></div>
+                        {% if commonData.videoExternalLink %}<div class="play"><a href="http://vimeo.com/80629469" data-remote="{{ commonData.video.url }}" data-toggle="lightbox" data-gallery="mixedgallery" data-title="Pellentesque habitant morbi" data-footer="Aliquam erat volutpat"> <i class="fa fa-play-circle-o"></i></a></div>
+                        {% endif %}
+                        {% if commonData.sugnature.url %}
+                        <div class="signature"><img src="{{ commonData.signature.url }}" style="max-width:100%" alt="{{ commonData.signature.fields.description }}"></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <!-- Contents Ends --> 
             <!-- Video Playing in background Starts -->
             <div id="my-video">
-                <video autoplay loop>
-                    <source src="{% static 'main/video/back.mp4' %}" type="video/mp4">
-                    <source src="{% static 'main/video/back.webm' %}" type="video/webm">
+                <video autoplay loop controls muted>
+                    <source src="{{ commonData.video.url }}" type="video/mp4">
                 </video>
             </div>
             <!-- Video Playing in background Ends -->
         </section>
+        {% endif %}
         <!-- /.VIDEO --> 
         <!-- TESTIMONIALS STARTS
             ========================================================================= -->
+        {% if testimonials %}
         <section id="testimonials">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">TESTIMONIALS</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-quote-left"></i></h1>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-quote-left"></i></h1>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Testimonial Carousel Starts --> 
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="1200">
+                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="owl-carousel" id="testimonials-carousel">
                             <!-- Item 1 Starts-->
@@ -906,6 +521,7 @@ WorkExperience<br>
                 <!-- Button Ends --> 
             </div>
         </section>
+        {% endif %}
         <!-- /.TESTIMONIALS --> 
         <!-- AWARDS STARTS
             ========================================================================= -->

@@ -61,6 +61,9 @@ class CommonData(Entry):
 	descriptionDownloadCv = Field(Text)
 	descriptionGetInTouch = Field(Text)
 	video = Field(Link)
+	videoExternalLink = Field(Text)
+	videoTextTitle = Field(Text)
+	videoTextFooter = Field(Text)
 	contactAddress = Field(Text)
 	contactPhone = Field(Text)
 	contactEmail = Field(Text)
@@ -72,6 +75,7 @@ class CommonData(Entry):
 	backgroundSkills = Field(Link)
 	backgroundProcess = Field(Link)
 	backgroundServices = Field(Link)
+	signature = Field(Link)
 
 class Education(Entry):
 	__content_type__ = 'education'
@@ -90,6 +94,8 @@ class Portfolio(Entry):
 	header = Field(Text)
 	subHeader = Field(Text)
 	image = Field(Link)
+	link = Field(Text)
+	portfolioTypes = Field(List)
 
 class Process(Entry):
 	__content_type__ = 'process'

@@ -19,7 +19,7 @@ def index(request):
 			Service,
 			Skill,
 			Testimonials,
-			WorkExperience
+			WorkExperience,
 		]
 	)
 	mainSlider = cfClient.fetch(MainSlider).all()
