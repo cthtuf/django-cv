@@ -31,7 +31,7 @@ def index(request):
             WorkExperience,
         ]
     )
-    mainSlider = cfClient.fetch(MainSlider).all()
+    mainSlider = order_by_index(cfClient.fetch(MainSlider).all())
     awards = order_by_index(cfClient.fetch(Awards).all())
     commonData = cfClient.fetch(CommonData).first()
     education = order_by_index(cfClient.fetch(Education).all())
