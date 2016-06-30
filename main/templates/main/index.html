@@ -453,7 +453,7 @@
                             <ul id="filters" class="option-set clearfix" data-option-key="filter">
                                 <li><a href="#filter" data-option-value="*" class="selected">ALL</a></li>
                                 {% for record in portfolioTypes %}
-                                <li><a href="#filter" data-option-value=".{{ record.portfolioTypes|cut:" " }}">{{ record.title }}</a></li>
+                                <li><a href="#filter" data-option-value=".{{ record|cut:" "}}">{{ record }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -469,10 +469,18 @@
                 <div class="row animated" data-animation="fadeInUp" data-animation-delay="300" id="container-thumbs">
                     <!-- Portfolio Item 1 Starts -->
                     {% for record in portfolio %}
-                    <div class="col-xs-12 col-sm-6 col-md-3 items photos">
-                        <div class="image" data-project="{{ record.link }}"><a href="#" class="overlayzoom"><img src="{{ record.image.url }}" class="img-responsive" alt="{{ record.image.fields.description }}"><span class="zoom"><span><i class="fa fa-picture-o"></i></span></span></a></div>
-                        <div class="heading">{{ record.header }}</div>
-                        <div class="category">{{ record.portfolioTypes }}</div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 items 
+                        {% for pt in record.portfolioType %}
+                            {{ pt|cut:" " }}
+                        {% endfor %}
+                    ">
+                        <div class="" data-project="{{ record.url }}">
+                            <a href="{{ record.url }}" class="" target="_blank">
+                                <img src="{{ record.image.url }}" class="img-responsive" alt="{{ record.image.fields.description }}">
+                                <div class="heading">{{ record.header }}</div>
+                                <div class="category">{{ record.portfolioType|join:", " }}</div>
+                            </a>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>

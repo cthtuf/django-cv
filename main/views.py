@@ -42,7 +42,11 @@ def index(request):
     testimonials = order_by_index(cfClient.fetch(Testimonials).all())
     workExperience = order_by_index(cfClient.fetch(WorkExperience).all())
 
-    print(portfolio[0].portfolioType)
+    portfolioTypes = []
+    for rec in portfolio:
+        for pt in rec.portfolioType:
+            if not pt in portfolioTypes:
+                portfolioTypes.append(pt)
 
     template = loader.get_template('main/index.html')
     context = RequestContext(request, {
@@ -51,13 +55,14 @@ def index(request):
       'commonData' : commonData,
       'education' : education,
       'portfolio' : portfolio,
+      'portfolioTypes' : portfolioTypes,
       'process' : process,
       'service' : service,
       'skill' : skill,
       'testimonials' : testimonials,
       'workExperience' : workExperience,
       }
-      )
+    )
     return HttpResponse(template.render(context))
 
     def feedback(request):

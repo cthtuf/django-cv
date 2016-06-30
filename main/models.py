@@ -94,7 +94,7 @@ class Portfolio(Entry):
     header = Field(Text)
     subHeader = Field(Text)
     image = Field(Link)
-    link = Field(Text)
+    url = Field(Text)
     portfolioType = Field(List)
 
 class Process(Entry):
