@@ -220,14 +220,14 @@
                         <div class="intro">{{ commonData.aboutLongDescription }}</div>
                     </div>
                 </div>
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <div>
                     <!-- Row 2 Ends --> 
                     <!-- Button Starts -->
                     <div class="link-btn"><a href="#myskills"><i class="fa fa-rocket"></i> MY SKILLS</a></div>
                     <!-- Button Ends --> 
                 </div>
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         <!-- /.ABOUT --> 
@@ -257,11 +257,11 @@
                 </div>
                 {% endif %}
 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}
@@ -307,11 +307,11 @@
                 <!-- Education Timeline Ends -->
                 <hr>
                 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#process"><i class="fa fa-cogs"></i> PROCESS</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}
@@ -343,11 +343,11 @@
                 </div>
                 <!-- Processes Ends -->
 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
                 <!-- Button Ends -->
-                {% endcomment %} 
+                {% endif %} 
             </div>
         </section>
         {% endif %}
@@ -388,11 +388,11 @@
                 <!-- Education Timeline Ends -->
                 <hr>
                 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#services"><i class="fa fa-heart"></i> SERVICES</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}
@@ -423,11 +423,11 @@
                 </div>
                 <!-- Services Carousel Starts -->
                 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}
@@ -478,11 +478,11 @@
                 </div>
                 <!-- Portfolio Thumbs Ends --> 
                 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#video"><i class="fa fa-play-circle-o"></i> VIDEO</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}
@@ -553,11 +553,11 @@
                 </div>
                 <!-- Testimonial Carousel Ends --> 
                 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#awards"><i class="fa fa-shield"></i> AWARDS</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}
@@ -591,11 +591,11 @@
                 </div>
                 <!-- Awards Carousel Ends -->
                 
-                {% comment %}
+                {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#contact"><i class="fa fa-map-marker"></i> CONTACT</a></div>
                 <!-- Button Ends --> 
-                {% endcomment %}
+                {% endif %}
             </div>
         </section>
         {% endif %}

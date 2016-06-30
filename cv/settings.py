@@ -132,4 +132,4 @@ STATIC_URL = '/static/'
 #    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
 #]
 
-INTERNAL_IPS = '87.254.145.106'
+INTERNAL_IPS = '80.91.22.174'
