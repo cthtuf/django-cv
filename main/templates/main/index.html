@@ -3,10 +3,20 @@
 {% block header_styles %}
 <style>
 	#myskills { background-image: url({{commonData.backgroundSkills.url}});}
+    #process { background-image : url({{commonData.backgroundProcess.url}});}
+    #services { background-image : url({{commonData.backgroundServices.url}});}
+    #video { background-image : url({{commonData.backgroundVideo.url}});}
+    #awards { background-image : url({{commonData.backgroundAwards.url}});}
 </style>
 {% endblock %}
 
 {% block content %}
+        <div id="preloader">
+            <div class="preloader">
+                <div class="cube1"></div>
+                <div class="cube2"></div>
+            </div>
+        </div>
 		{% if mainSlider %}
 		<!-- SLIDER STARTS ========================================================================= -->
         <section id="slider" class="slider-bg-static">
@@ -116,11 +126,24 @@
                         <ul class="nav navbar-nav pull-right">
                             <li class="current"><a href="#slider" data-toggle="collapse" data-target=".navbar-collapse">TOP</a></li>
                             <li><a href="#about" data-toggle="collapse" data-target=".navbar-collapse">ABOUT</a></li>
-                            <li><a href="#myskills" data-toggle="collapse" data-target=".navbar-collapse">SKILLS</a></li>
-                            <li><a href="#education" data-toggle="collapse" data-target=".navbar-collapse">EDUCATION</a></li>
-                            <li><a href="#work-experience" data-toggle="collapse" data-target=".navbar-collapse">WORK EXPERIENCE</a></li>
-                            <li><a href="#services" data-toggle="collapse" data-target=".navbar-collapse">SERVICES</a></li>
-                            <li><a href="#portfolio" data-toggle="collapse" data-target=".navbar-collapse">PORTFOLIO</a></li>
+                            {% if skills %}
+                                <li><a href="#myskills" data-toggle="collapse" data-target=".navbar-collapse">SKILLS</a></li>
+                            {% endif %}
+                            {% if education %}
+                                <li><a href="#education" data-toggle="collapse" data-target=".navbar-collapse">EDUCATION</a></li>
+                            {% endif %}
+                            {% if process %}
+                                <li><a href="#process" data-toggle="collapse" data-target=".navbar-collapse">PROCESS</a></li>
+                            {% endif %}
+                            {% if workExperience %}
+                                <li><a href="#work-experience" data-toggle="collapse" data-target=".navbar-collapse">WORK EXPERIENCE</a></li>
+                            {% endif %}
+                            {% if services %}
+                                <li><a href="#services" data-toggle="collapse" data-target=".navbar-collapse">SERVICES</a></li>
+                            {% endif %}
+                            {% if portfolio %}
+                                <li><a href="#portfolio" data-toggle="collapse" data-target=".navbar-collapse">PORTFOLIO</a></li>
+                            {% endif %}
                             <li><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse">CONTACT</a></li>
                         </ul>
                     </div>
@@ -197,17 +220,20 @@
                         <div class="intro">{{ commonData.aboutLongDescription }}</div>
                     </div>
                 </div>
+                {% comment %}
                 <div>
                     <!-- Row 2 Ends --> 
                     <!-- Button Starts -->
                     <div class="link-btn"><a href="#myskills"><i class="fa fa-rocket"></i> MY SKILLS</a></div>
                     <!-- Button Ends --> 
                 </div>
+                {% endcomment %}
             </div>
         </section>
         <!-- /.ABOUT --> 
         <!-- MY SKILLS STARTS
             ========================================================================= -->
+        {% if skills %}
         <section id="myskills" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
@@ -230,14 +256,19 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
+        {% endif %}
         <!-- /.MY SKILLS --> 
         <!-- EDUCATION STARTS
             ========================================================================= -->
+        {% if education %}
         <section id="education">
             <div class="container">
                 <!-- Header Starts -->
@@ -275,14 +306,19 @@
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
+                
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#process"><i class="fa fa-cogs"></i> PROCESS</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
+        {% endif %}
         <!-- /.EDUCATION --> 
         <!-- PROCESS STARTS
             ========================================================================= -->
+        {% if process %}
         <section id="process" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
@@ -306,14 +342,19 @@
                     {% endfor %}
                 </div>
                 <!-- Processes Ends -->
+
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
-                <!-- Button Ends --> 
+                <!-- Button Ends -->
+                {% endcomment %} 
             </div>
         </section>
+        {% endif %}
         <!-- /.PROCESS --> 
         <!-- WORK EXPERIENCE STARTS
             ========================================================================= -->
+        {% if workExperience %}
         <section id="work-experience">
             <div class="container">
                 <!-- Header Starts -->
@@ -346,14 +387,19 @@
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
+                
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#services"><i class="fa fa-heart"></i> SERVICES</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
+        {% endif %}
         <!-- /.WORK EXPERIENCE --> 
         <!-- SERVICES STARTS
             ========================================================================= -->
+        {% if services %}
         <section id="services" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
@@ -376,14 +422,19 @@
                     {% endfor %}
                 </div>
                 <!-- Services Carousel Starts -->
+                
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
+        {% endif %}
         <!-- /.SERVICES --> 
         <!-- PORTFOLIO STARTS
             ========================================================================= -->
+        {% if portfolio %}
         <section id="portfolio">
             <div class="container">
                 <!-- Header Starts -->
@@ -426,11 +477,15 @@
                     {% endfor %}
                 </div>
                 <!-- Portfolio Thumbs Ends --> 
+                
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#video"><i class="fa fa-play-circle-o"></i> VIDEO</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
+        {% endif %}
         <!-- /.PORTFOLIO --> 
         <!-- VIDEO STARTS
             ========================================================================= -->
@@ -485,106 +540,65 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="owl-carousel" id="testimonials-carousel">
                             <!-- Item 1 Starts-->
+                            {% for record in testimonials %}
                             <div class="items">
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>
-                                <div class="emp-name">- JOHN DOE- </div>
-                                <div class="company-name">company name</div>
+                                <div class="description">{{ record.text | safe }}</div>
+                                <div class="emp-name">- {{ record.name }} - </div>
+                                <div class="company-name">{{ record.companyName }}</div>
                             </div>
+                            {% endfor %}
                             <!-- Item 1 Ends--> 
-                            <!-- Item 2 Starts-->
-                            <div class="items">
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>
-                                <div class="emp-name">- JOHN DOE- </div>
-                                <div class="company-name">company name</div>
-                            </div>
-                            <!-- Item 2 Ends--> 
-                            <!-- Item 3 Starts-->
-                            <div class="items">
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>
-                                <div class="emp-name">- JOHN DOE- </div>
-                                <div class="company-name">company name</div>
-                            </div>
-                            <!-- Item 3 Ends--> 
-                            <!-- Item 4 Starts-->
-                            <div class="items">
-                                <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</div>
-                                <div class="emp-name">- JOHN DOE- </div>
-                                <div class="company-name">company name</div>
-                            </div>
-                            <!-- Item 4 Ends--> 
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial Carousel Ends --> 
+                
+                {% comment %}
                 <!-- Button Starts -->
                 <div class="link-btn"><a href="#awards"><i class="fa fa-shield"></i> AWARDS</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
         {% endif %}
         <!-- /.TESTIMONIALS --> 
         <!-- AWARDS STARTS
             ========================================================================= -->
+        {% if awards %}
         <section id="awards" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">AWARDS</div>
+                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">AWARDS & CERTIFICATES</div>
                         <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-shield"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">{{ commonData.descriptionAwards | safe }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Awards Carousel Starts --> 
-                <div class="owl-carousel animated" data-animation="fadeInUp" data-animation-delay="1700" id="awards-carousel">
+                <div class="owl-carousel animated" data-animation="fadeInUp" data-animation-delay="300" id="awards-carousel">
                     <!-- Item 1 Starts -->
+                    {% for record in awards %}
                     <div class="items">
                         <div class="icon"><i class="fa fa-shield"></i></div>
-                        <div class="title">AWARD TITLE</div>
-                        <div class="companyname">COMPANY NAME</div>
-                        <div class="year">FEB 2013</div>
+                        <div class="title">{{ record.title }}</div>
+                        <div class="companyname">{{ record.companyName }}</div>
+                        <div class="year">{{ record.date }}</div>
                     </div>
+                    {% endfor %}
                     <!-- Item 1 Ends -->
-                    <!-- Item 2 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-trophy"></i></div>
-                        <div class="title">AWARD TITLE</div>
-                        <div class="companyname">COMPANY NAME</div>
-                        <div class="year">FEB 2013</div>
-                    </div>
-                    <!-- Item 2 Ends -->
-                    <!-- Item 3 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-shield"></i></div>
-                        <div class="title">AWARD TITLE</div>
-                        <div class="companyname">COMPANY NAME</div>
-                        <div class="year">FEB 2013</div>
-                    </div>
-                    <!-- Item 3 Ends -->
-                    <!-- Item 4 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-trophy"></i></div>
-                        <div class="title">AWARD TITLE</div>
-                        <div class="companyname">COMPANY NAME</div>
-                        <div class="year">FEB 2013</div>
-                    </div>
-                    <!-- Item 4 Ends -->
-                    <!-- Item 4 Starts -->
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-shield"></i></div>
-                        <div class="title">AWARD TITLE</div>
-                        <div class="companyname">COMPANY NAME</div>
-                        <div class="year">FEB 2013</div>
-                    </div>
-                    <!-- Item 4 Ends -->
                 </div>
                 <!-- Awards Carousel Ends -->
+                
+                {% comment %}
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="2200"><a href="#contact"><i class="fa fa-map-marker"></i> CONTACT</a></div>
+                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#contact"><i class="fa fa-map-marker"></i> CONTACT</a></div>
                 <!-- Button Ends --> 
+                {% endcomment %}
             </div>
         </section>
+        {% endif %}
         <!-- /.AWARDS --> 
         <!-- DOWNLOAD CV STARTS
             ========================================================================= -->
@@ -593,11 +607,11 @@
                 <div class="row">
                     <!-- Description Starts -->
                     <div class="col-md-8 animated" data-animation="fadeInLeft" data-animation-delay="200">
-                        <div class="description">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</div>
+                        <div class="description">{{ commonData.descriptionDownloadCv}}</div>
                     </div>
                     <!-- Description Ends -->
                     <!-- Download CV Button Starts -->
-                    <div class="col-md-4 animated" data-animation="fadeInRight" data-animation-delay="700">
+                    <div class="col-md-4 animated" data-animation="fadeInRight" data-animation-delay="300">
                         <div class="link-btn-2"><a href=""><i class="fa fa-download"></i> DOWNLOAD CV</a></div>
                     </div>
                     <!-- Download CV Button Ends -->
@@ -613,19 +627,17 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">CONTACT</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-map-marker"></i></h1>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-map-marker"></i></h1>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Contact Info Starts -->
-                <div class="row contact-info animated" data-animation="fadeInUp" data-animation-delay="1200">
+                <div class="row contact-info animated" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
-                        <div class="address">PO Box 16122 Collins Street West, <br>
-                            Victoria 8007 Australia
-                        </div>
-                        <div class="phone">01234 567 890</div>
-                        <div class="email">johndoe@johndeo.com</div>
-                        <div class="web">www.johndeo.com</div>
+                        <div class="address">{{ commonData.aboutAddress | safe }}</div>
+                        <div class="phone">{{ commonData.aboutPhone }}</div>
+                        <div class="email">{{ commonData.aboutEmail }}</div>
+                        <div class="web">{{ commonData.aboutWebsite }}</div>
                     </div>
                 </div>
                 <!-- Contact Info Ends -->
@@ -678,20 +690,27 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
                         <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">GET IN TOUCH</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-comments"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</div>
+                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-comments"></i></h1>
+                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSocialMedia }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Social Icons Starts -->
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="1700">
+                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12 social-icons">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            {% if commonData.socialFacebook %}
+                                <li><a href="{{ commonData.socialFacebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            {% endif %}
+                            {% if commonData.socialLinkedIn %}
+                                <li><a href="{{ commonData.socialLinkedIn }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            {% endif %}
+                            {% if commonData.socialVk %}
+                                <li><a href="{{ commonData.socialVk }}" target="_blank"><i class="fa fa-vk"></i></a></li>
+                            {% endif %}
+                            {% if commonData.socialGooglePlus %}
+                                <li><a href="{{ commonData.socialGooglePlus }}" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -746,11 +765,12 @@
         <script type="text/javascript" src="{% static 'main/js/progress-bars/jquery.donutchart.js' %}"></script> 
         <script>
         	{% for record in skill %}
-            	$("#donutchart{{ record.index }}").donutchart("animate");
+                $("#donutchart{{ record.index }}").donutchart("animate");
             {% endfor %}
-        </script> 
-        <!-- Retina --> 
+        </script>
+        <!-- Retina -->
         <script type="text/javascript" src="{% static 'main/js/retina/retina.js' %}"></script>
-        <!-- FitVids -->
         <script type="text/javascript" src="{% static 'main/js/jquery.fitvids.js' %}"></script>
 {% endblock %}
+
+    

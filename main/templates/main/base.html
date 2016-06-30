@@ -11,9 +11,7 @@
     <link rel="shortcut icon" href="{% static 'main/img/ico/favicon.ico' %}">
     {% block title %}<title>Sergey Yarlov - IT Specialist</title>{% endblock %}
     <!-- ALL STYLESHEETS -->
-    <link href="{% static 'main/css/all-stylesheet.css' %}" rel="stylesheet" type="text/css">
-    <!-- ALL COLORED STYLESHEETS -->
-    <link href="{% static 'main/css/colors/greyish-blue.css' %}" rel="alternate stylesheet" type="text/css" title="greyish-blue">
+    <link href="{% static 'main/css/all-stylesheet.css' %}?1" rel="stylesheet" type="text/css">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -37,15 +35,14 @@
                     <div class="col-lg-6 col-lg-offset-3">
                     	{% block copyright %}
                         <!-- Copyright Starts -->
-                        <div class="desc animated" data-animation="fadeInUp" data-animation-delay="200"><i class="fa fa-heart"></i><br>
-							© 2014. Personal ONE.<br>
-                            Tempor sit amet, ante. Donec eu libero.
+                        <div class="desc animated" data-animation="fadeInUp" data-animation-delay="200">
+							© {% now "Y" %}. {{ commonData.aboutFullName }}
                         </div>
                         <!-- Copyright Ends -->
                         {% endblock %}
 						<div class="line"></div>
                         <!-- ToTop Starts -->
-                        <a href="#" class="scrollup animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-angle-double-up"></i></a> 
+                        <a href="#" class="scrollup animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-angle-double-up"></i></a> 
                         <!-- ToTop Ends -->
                     </div>
                 </div>

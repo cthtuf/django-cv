@@ -295,10 +295,9 @@ $(window).load(function(){
 
 /************************************************************************************ PRELOADER STARTS */	
 
- jQuery(window).load(function() {
-             $('#preloader').fadeOut('slow'); 
-             
-         	});
+ jQuery(document).ready(function() {
+    $('#preloader').fadeOut('slow'); 
+});
 
 
 
