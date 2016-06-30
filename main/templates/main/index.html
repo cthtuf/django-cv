@@ -25,7 +25,7 @@
                     <ul>
                     	{% for slide in mainSlider %}
                         <!-- SLIDE NR. 1-->
-                        <li data-transition="fade" data-slotamount="5" data-masterspeed="700">
+                        <li data-transition="fade" data-slotamount="5" data-masterspeed="500">
                             <!-- MAIN IMAGE --> 
                             <img src="{{ slide.image.url }}"  alt="{{ slide.image.fields.description }}" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat"> 
                             <!-- LAYER NR. 1 -->
@@ -159,16 +159,16 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="100">ABOUT ME</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-briefcase"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="400">{{ commonData.aboutShortDescription }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="100">ABOUT ME</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-briefcase"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="400">{{ commonData.aboutShortDescription }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Row 1 Starts -->
                 <div class="row">
                     <!-- Left Column Starts -->
-                    <div class="col-md-3 personal-info col-left animated" data-animation="fadeInRight" data-animation-delay="300">
+                    <div class="col-md-3 personal-info col-left {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInRight" data-animation-delay="300">
                         <div class="line1">FULL NAME<br>
                             <span class="line2">{{ commonData.aboutFullName}}</span> 
                         </div>
@@ -185,7 +185,7 @@
                     <!-- Left Column Ends -->
                     <!-- Middle Column Starts -->
                     <div class="col-md-6">
-                        <div class="col-md-8 col-md-offset-2 animated" data-animation="fadeInUp" data-animation-delay="300">
+                        <div class="col-md-8 col-md-offset-2 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                             <div class="pic owl-carousel" id="my-pic-carousel">
                             	{% for photo in commonData.aboutPhotos %}
                             		{% if photo.url %}
@@ -197,7 +197,7 @@
                     </div>
                     <!-- Middle Column Ends -->
                     <!-- Right Column Starts -->
-                    <div class="col-md-3 personal-info col-right animated" data-animation="fadeInLeft" data-animation-delay="300">
+                    <div class="col-md-3 personal-info col-right {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInLeft" data-animation-delay="300">
                         <div class="line1">ADDRESS<br>
                             <span class="line2">{{ commonData.aboutAddress }}</span> 
                         </div>
@@ -216,7 +216,7 @@
                 <!-- Row 1 Ends --> 
                 <!-- Row 2 Starts -->
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3 animated" data-animation="fadeInUp" data-animation-delay="300">
+                    <div class="col-md-6 col-md-offset-3 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                         <div class="intro">{{ commonData.aboutLongDescription }}</div>
                     </div>
                 </div>
@@ -239,14 +239,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">MY SKILLS</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-rocket"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSkills }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">MY SKILLS</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-rocket"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSkills }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 {% if skill %}
-                <div class="owl-carousel animated" data-animation="fadeIn" data-animation-delay="300" id="myskills-carousel">
+                <div class="owl-carousel {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300" id="myskills-carousel">
                 	{% for record in skill %}
                     <div class="items">
                         <div id="donutchart{{ record.index }}" data-percent="{{ record.persent }}"> </div>
@@ -259,7 +259,7 @@
 
                 {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
+                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
                 <!-- Button Ends --> 
                 {% endif %}
             </div>
@@ -274,14 +274,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">EDUCATION</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-book"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commondData.descriptionEducation }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">EDUCATION</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-book"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commondData.descriptionEducation }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Education Timeline Starts -->
-                <div class="education-timeline animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="education-timeline {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     {% for record in education %}
                     <!-- Row 1 Starts -->
                     <div class="row education">
@@ -324,14 +324,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">PROCESS</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-cogs"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionProcess }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">PROCESS</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-cogs"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionProcess }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Processes Starts -->
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <!-- Process 1 -->
                     {% for record in process %}
                     <div class="col-xs-6 col-sm-4 col-md-2">
@@ -345,7 +345,7 @@
 
                 {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
+                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
                 <!-- Button Ends -->
                 {% endif %} 
             </div>
@@ -360,14 +360,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">WORK EXPERIENCE</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-tags"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionWorkExperience }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">WORK EXPERIENCE</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-tags"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionWorkExperience }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Education Timeline Starts -->
-                <div class="work-experience-timeline animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="work-experience-timeline {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="row">
                         <!-- Left Column Starts -->
                         {% for record in workExperience %}
@@ -405,14 +405,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">SERVICES</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-heart"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionServices }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">SERVICES</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-heart"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionServices }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Services Carousel Starts -->
-                <div class="owl-carousel animated" data-animation="fadeInUp" data-animation-delay="300" id="services-carousel">
+                <div class="owl-carousel {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300" id="services-carousel">
                     <!-- Services 1 Starts -->
                     {% for record in service %}
                     <div class="items">
@@ -425,7 +425,7 @@
                 
                 {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
+                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
                 <!-- Button Ends --> 
                 {% endif %}
             </div>
@@ -440,14 +440,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">PORTFOLIO</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-thumbs-up"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionPorfolio }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">PORTFOLIO</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-thumbs-up"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionPorfolio }}</div>
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Portfolio Nav Starts -->
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
                         <div id="options">
                             <ul id="filters" class="option-set clearfix" data-option-key="filter">
@@ -466,7 +466,7 @@
                 <!-- AJAX Portfolio Details --> 
                 <!-- Portfolio Thumbs Starts -->
                 <div class="container"> 
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300" id="container-thumbs">
+                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300" id="container-thumbs">
                     <!-- Portfolio Item 1 Starts -->
                     {% for record in portfolio %}
                     <div class="col-xs-12 col-sm-6 col-md-3 items 
@@ -503,17 +503,17 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">VIDEO</div>
-                        {#<div class="description animated" data-animation="fadeIn" data-animation-delay="300">HTML5 / SELF HOSTED VIDEO</div>#}
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">VIDEO</div>
+                        {#<div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">HTML5 / SELF HOSTED VIDEO</div>#}
                     </div>
                 </div>
                 <!-- Header Ends --> 
                 <!-- Contents Starts --> 
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
                         {% if commonData.videoExternalLink %}<div class="play"><a href="http://vimeo.com/80629469" data-remote="{{ commonData.video.url }}" data-toggle="lightbox" data-gallery="mixedgallery" data-title="Pellentesque habitant morbi" data-footer="Aliquam erat volutpat"> <i class="fa fa-play-circle-o"></i></a></div>
                         {% endif %}
-                        {% if commonData.sugnature.url %}
+                        {% if commonData.sugnature %}
                         <div class="signature"><img src="{{ commonData.signature.url }}" style="max-width:100%" alt="{{ commonData.signature.fields.description }}"></div>
                         {% endif %}
                     </div>
@@ -538,13 +538,13 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">TESTIMONIALS</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-quote-left"></i></h1>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">TESTIMONIALS</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-quote-left"></i></h1>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Testimonial Carousel Starts --> 
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="owl-carousel" id="testimonials-carousel">
                             <!-- Item 1 Starts-->
@@ -578,14 +578,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">AWARDS & CERTIFICATES</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-shield"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="1200">{{ commonData.descriptionAwards | safe }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">AWARDS & CERTIFICATES</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-shield"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="1200">{{ commonData.descriptionAwards | safe }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Awards Carousel Starts --> 
-                <div class="owl-carousel animated" data-animation="fadeInUp" data-animation-delay="300" id="awards-carousel">
+                <div class="owl-carousel {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300" id="awards-carousel">
                     <!-- Item 1 Starts -->
                     {% for record in awards %}
                     <div class="items">
@@ -601,7 +601,7 @@
                 
                 {% if commonData.showSectionButtons %}
                 <!-- Button Starts -->
-                <div class="link-btn animated" data-animation="fadeInUp" data-animation-delay="300"><a href="#contact"><i class="fa fa-map-marker"></i> CONTACT</a></div>
+                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#contact"><i class="fa fa-map-marker"></i> CONTACT</a></div>
                 <!-- Button Ends --> 
                 {% endif %}
             </div>
@@ -614,13 +614,13 @@
             <div class="container">
                 <div class="row">
                     <!-- Description Starts -->
-                    <div class="col-md-8 animated" data-animation="fadeInLeft" data-animation-delay="200">
+                    <div class="col-md-8 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInLeft" data-animation-delay="200">
                         <div class="description">{{ commonData.descriptionDownloadCv}}</div>
                     </div>
                     <!-- Description Ends -->
                     <!-- Download CV Button Starts -->
-                    <div class="col-md-4 animated" data-animation="fadeInRight" data-animation-delay="300">
-                        <div class="link-btn-2"><a href=""><i class="fa fa-download"></i> DOWNLOAD CV</a></div>
+                    <div class="col-md-4 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInRight" data-animation-delay="300">
+                        <div class="link-btn-2"><a href=""><i class="fa fa-download"></i> GET CV</a></div>
                     </div>
                     <!-- Download CV Button Ends -->
                 </div>
@@ -634,13 +634,13 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">CONTACT</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-map-marker"></i></h1>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">CONTACT</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-map-marker"></i></h1>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Contact Info Starts -->
-                <div class="row contact-info animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row contact-info {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
                         <div class="address">{{ commonData.aboutAddress | safe }}</div>
                         <div class="phone">{{ commonData.aboutPhone }}</div>
@@ -655,13 +655,13 @@
                     <!-- Heading Starts -->
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 section-heading">
-                            <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">DROP ME A LINE</div>
-                            <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-envelope"></i></h1>
+                            <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">DROP ME A LINE</div>
+                            <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-envelope"></i></h1>
                         </div>
                     </div>
                     <!-- Heading Ends -->
                     <!-- Form Starts -->
-                    <div class="row form animated" data-animation="fadeInUp" data-animation-delay="1200">
+                    <div class="row form {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="1200">
                         <div class="col-md-6 col-md-offset-3">
                             <form action='process.php' method='post' name='ContactForm' id='ContactForm' >
                                 <div class="input-group"> <span class="input-group-addon">@</span>
@@ -697,14 +697,14 @@
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading animated" data-animation="fadeInUp" data-animation-delay="200">GET IN TOUCH</div>
-                        <h1 class="icon-line animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-comments"></i></h1>
-                        <div class="description animated" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSocialMedia }}</div>
+                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">GET IN TOUCH</div>
+                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-comments"></i></h1>
+                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSocialMedia }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Social Icons Starts -->
-                <div class="row animated" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12 social-icons">
                         <ul>
                             {% if commonData.socialFacebook %}

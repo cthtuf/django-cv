@@ -35,14 +35,14 @@
                     <div class="col-lg-6 col-lg-offset-3">
                     	{% block copyright %}
                         <!-- Copyright Starts -->
-                        <div class="desc animated" data-animation="fadeInUp" data-animation-delay="200">
+                        <div class="desc {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">
 							© {% now "Y" %}. {{ commonData.aboutFullName }}
                         </div>
                         <!-- Copyright Ends -->
                         {% endblock %}
 						<div class="line"></div>
                         <!-- ToTop Starts -->
-                        <a href="#" class="scrollup animated" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-angle-double-up"></i></a> 
+                        <a href="#" class="scrollup {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-angle-double-up"></i></a> 
                         <!-- ToTop Ends -->
                     </div>
                 </div>
