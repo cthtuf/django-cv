@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta name="description" content="{{ commonData.siteDescription }}">
     <meta name="author" content="{{ commonData.aboutFullName }}">
+    <meta name="og:title" content="{{ commonData.siteTitle }}">
+    <meta name="og:type" content="website">
+    <meta name="og:url" content="{{ commonData.siteUrl }}">
+    <meta name="og:image" content="{{ commonData.siteOgImage.url }}">
+    <meta name="og:description" content="{{ commonData.siteDescription }}">
     <link rel="shortcut icon" href="{{ commonData.siteFavicon.url }}">
     {% block title %}<title>{{ commonData.siteTitle }}</title>{% endblock %}
     <!-- ALL STYLESHEETS -->
