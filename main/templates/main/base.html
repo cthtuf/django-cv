@@ -6,10 +6,10 @@
 {% block head %}
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="description" content="">
-    <meta name="author" content="Sergey Yarlov">
-    <link rel="shortcut icon" href="{% static 'main/img/ico/favicon.ico' %}">
-    {% block title %}<title>Sergey Yarlov - IT Specialist</title>{% endblock %}
+    <meta name="description" content="{{ commonData.siteDescription }}">
+    <meta name="author" content="{{ commonData.aboutFullName }}">
+    <link rel="shortcut icon" href="{{ commonData.siteFavicon.url }}">
+    {% block title %}<title>{{ commonData.siteTitle }}</title>{% endblock %}
     <!-- ALL STYLESHEETS -->
     <link href="{% static 'main/css/all-stylesheet.css' %}?1" rel="stylesheet" type="text/css">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
