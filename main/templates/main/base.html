@@ -27,6 +27,39 @@
 {% endblock %}
 </head>
 <body>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": "{{ commonData.aboutFullName }}",
+  "jobTitle": "{{ commonData.aboutJobTitle }}",
+  "telephone" : "{{ commonData.aboutPhone }}",
+  "image": "{{ commonData.siteImage }}",
+  "description" : "{{ commonData.siteDescription }}",
+  "url": "{{ commonData.siteUrl }}",
+  "sameAs": [
+    {% if commonData.socialFacebook %}
+    "{{ commonData.socialFacebook }}",
+    {% endif %}
+    {% if commonData.socialLinkedIn %}
+    "{{ commonData.socialLinkedIn }}",
+    {% endif %}
+    {% if commonData.socialVk %}
+    " {{ commonData.socialVk }}",
+    {% endif %}
+    {% if commonData.socialGooglePlus %}
+    "{{ commonData.socialGooglePlus }}",
+    {% endif %}
+    {% if commonData.socialInstagram %}
+    "{{ commonData.socialInstagram }}",
+    {% endif %}
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ commonData.aboutAddress }}"
+  }
+}
+</script>
 {% block page %}
 	{% block content %}
 	{% endblock %}
