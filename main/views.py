@@ -1,5 +1,6 @@
-from django.shortcuts import render
 from contentful.cda.client import Client
+from django.shortcuts import render
+
 from .models import *
 
 
