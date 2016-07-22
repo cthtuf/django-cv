@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from contentful.cda.client import Client
 from .models import *
-from pprint import pprint as print
 
 def order_by_index(obj):
     '''
