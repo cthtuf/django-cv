@@ -63,5 +63,6 @@ def index(request):
     }
     return render(request, 'main/index.html', context)
 
-    def feedback(request):
-        return '{ success : 1 }'
+
+def feedback(request):
+    return '{ success : 1 }'
