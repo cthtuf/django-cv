@@ -4,6 +4,7 @@ from django.template import RequestContext, loader
 from contentful.cda.client import Client
 from .models import *
 
+
 def order_by_index(obj):
     '''
     Hardcoded sort method based on the field 'index' in my content models in Contentful.
@@ -12,12 +13,13 @@ def order_by_index(obj):
 
     return sorted(obj, key=lambda o: o.index)
 
+
 # Create your views here.
 def index(request):
     cfClient = Client(
         '82mi4zooxljq',
         '7f86a46952bf2432efe06a21ed02a3d481ec0924566ff1bd11be04822d936b12',
-        custom_entries= [
+        custom_entries=[
             MainSlider,
             Awards,
             CommonData,
@@ -44,25 +46,24 @@ def index(request):
     portfolioTypes = []
     for rec in portfolio:
         for pt in rec.portfolioType:
-            if not pt in portfolioTypes:
+            if pt not in portfolioTypes:
                 portfolioTypes.append(pt)
 
     template = loader.get_template('main/index.html')
     context = RequestContext(request, {
-      'mainSlider' : mainSlider,
-      'awards' : awards,
-      'commonData' : commonData,
-      'education' : education,
-      'portfolio' : portfolio,
-      'portfolioTypes' : portfolioTypes,
-      'process' : process,
-      'service' : service,
-      'skill' : skill,
-      'testimonials' : testimonials,
-      'workExperience' : workExperience,
-      }
-    )
+        'mainSlider': mainSlider,
+        'awards': awards,
+        'commonData': commonData,
+        'education': education,
+        'portfolio': portfolio,
+        'portfolioTypes': portfolioTypes,
+        'process': process,
+        'service': service,
+        'skill': skill,
+        'testimonials': testimonials,
+        'workExperience': workExperience,
+    })
     return HttpResponse(template.render(context))
 
     def feedback(request):
-       return '{ success : 1 }'
+        return '{ success : 1 }'
