@@ -1,6 +1,6 @@
-from django.db import models
 from contentful.cda.fields import *
 from contentful.cda.resources import *
+
 
 # Create your models here.
 class MainSlider(Entry):
@@ -12,6 +12,7 @@ class MainSlider(Entry):
     subHeader = Field(Text)
     firstSlogan = Field(Text)
     secondSlogan = Field(Text)
+
 
 class AboutMe(Entry):
     __content_type__ = 'aboutMe'
@@ -28,6 +29,7 @@ class AboutMe(Entry):
     shortInfo = Field(Text)
     longInfo = Field(Text)
 
+
 class Awards(Entry):
     __content_type__ = 'awards'
 
@@ -36,6 +38,7 @@ class Awards(Entry):
     companyName = Field(Text)
     date = Field(Text)
     image = Field(Link)
+
 
 class CommonData(Entry):
     __content_type__ = 'commonData'
@@ -77,6 +80,7 @@ class CommonData(Entry):
     signature = Field(Link)
     showSectionButtons = Field(Boolean)
 
+
 class Education(Entry):
     __content_type__ = 'education'
 
@@ -86,6 +90,7 @@ class Education(Entry):
     country = Field(Text)
     datePeriod = Field(Text)
     description = Field(Text)
+
 
 class Portfolio(Entry):
     __content_type__ = 'portfolio'
@@ -97,12 +102,14 @@ class Portfolio(Entry):
     url = Field(Text)
     portfolioType = Field(List)
 
+
 class Process(Entry):
     __content_type__ = 'process'
 
     index = Field(Number)
     name = Field(Text)
     icon = Field(Text)
+
 
 class Service(Entry):
     __content_type__ = 'service'
@@ -112,12 +119,14 @@ class Service(Entry):
     description = Field(Text)
     icon = Field(Text)
 
+
 class Skill(Entry):
     __content_type__ = 'skill'
 
     index = Field(Number)
     title = Field(Text)
     persent = Field(Number)
+
 
 class Testimonials(Entry):
     __content_type__ = 'testimonials'
@@ -126,6 +135,7 @@ class Testimonials(Entry):
     name = Field(Text)
     companyName = Field(Text)
     text = Field(Text)
+
 
 class WorkExperience(Entry):
     __content_type__ = 'workExperience'
