@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import RequestContext, loader
 from contentful.cda.client import Client
 from .models import *
 
@@ -49,8 +47,7 @@ def index(request):
             if pt not in portfolioTypes:
                 portfolioTypes.append(pt)
 
-    template = loader.get_template('main/index.html')
-    context = RequestContext(request, {
+    context = {
         'mainSlider': mainSlider,
         'awards': awards,
         'commonData': commonData,
@@ -62,8 +59,8 @@ def index(request):
         'skill': skill,
         'testimonials': testimonials,
         'workExperience': workExperience,
-    })
-    return HttpResponse(template.render(context))
+    }
+    return render(request, 'main/index.html', context)
 
     def feedback(request):
         return '{ success : 1 }'
