@@ -130,6 +130,12 @@ class AboutMeBlock(models.Model):
         max_length=4095
     )
 
+    profession = models.CharField(
+        verbose_name="Профессия",
+        max_length=127,
+        help_text="Например, \"Дизайнер-проектировщик\""
+    )
+
     class Meta:
         verbose_name = verbose_name_plural = "Блок Обо мне"
 
@@ -146,6 +152,11 @@ class AwardsBlock(models.Model):
     description = models.CharField(
         verbose_name="Описание, блок Достижения",
         max_length=4095,
+    )
+
+    background = models.ImageField(
+        verbose_name="Фоновое изображение",
+        upload_to="award",
     )
 
     class Meta:
@@ -823,6 +834,11 @@ class SocialRecord(models.Model):
         max_length=10,
     )
 
+    @property
+    def get_icon(self):
+        social_network_icons_dict = dict(GetInTouchBlock.SOCIAL_NETWORK_ICONS)
+        return social_network_icons_dict[self.type]
+
     class Meta:
         verbose_name = "Запись о соц.сети"
         verbose_name_plural = "Записи о соц.сетях"
@@ -851,6 +867,36 @@ class Settings(models.Model):
 
     class Meta:
         verbose_name = verbose_name_plural = "Настройки сайта"
+
+    def __str__(self):
+        return "{0} #{1}".format(self._meta.verbose_name, self.id)
+
+
+class SEO(models.Model):
+    favicon = models.FileField(
+        verbose_name="favicon",
+        upload_to="seo",
+    )
+
+    site_image = models.ImageField(
+        verbose_name="Изображение сайта",
+        upload_to="seo",
+        help_text="Для поисковиков и соц.сетей",
+    )
+
+    site_description = models.CharField(
+        verbose_name="Описание сайта",
+        max_length=160,
+        help_text="Для поисковиков и соц.сетей",
+    )
+
+    site_url = models.URLField(
+        verbose_name="URL сайта",
+        max_length=255,
+    )
+
+    class Meta:
+        verbose_name = verbose_name_plural = "SEO"
 
     def __str__(self):
         return "{0} #{1}".format(self._meta.verbose_name, self.id)

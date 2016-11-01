@@ -8,7 +8,7 @@ def index(request):
     awards_block = AwardsBlock.objects.first()
     education_block = EducationBlock.objects.first()
     portfolio_block = PortfolioBlock.objects.first()
-    process_block = PortfolioBlock.objects.first()
+    process_block = ProcessBlock.objects.first()
     service_block = ServiceBlock.objects.first()
     skill_block = SkillBlock.objects.first()
     testimonials_block = TestimonialsBlock.objects.first()
@@ -19,6 +19,7 @@ def index(request):
     cv_block = CVBlock.objects.first()
     about_me_block = AboutMeBlock.objects.first()
     settings = Settings.objects.all()
+    seo = SEO.objects.first()
 
     context = {
         'slider_block': slider_block,
@@ -35,6 +36,7 @@ def index(request):
         'get_in_touch_block': get_in_touch_block,
         'cv_block': cv_block,
         'about_me_block': about_me_block,
+        'seo': seo,
         'settings': settings,
     }
     return render(request, 'main/index.html', context)

@@ -155,37 +155,37 @@
                     <ul class="nav navbar-nav pull-right">
                         <li class="current"><a href="#slider"
                                                data-toggle="collapse"
-                                               data-target=".navbar-collapse">TOP</a>
+                                               data-target=".navbar-collapse">НАВЕРХ</a>
                         </li>
                         <li><a href="#about" data-toggle="collapse"
                                data-target=".navbar-collapse">ОБО МНЕ</a></li>
-                        {% if skills %}
+                        {% if skill_block.is_active %}
                             <li><a href="#myskills" data-toggle="collapse"
                                    data-target=".navbar-collapse">НАВЫКИ</a>
                             </li>
                         {% endif %}
-                        {% if education %}
+                        {% if education_block.is_active %}
                             <li><a href="#education" data-toggle="collapse"
                                    data-target=".navbar-collapse">ОБРАЗОВАНИЕ</a>
                             </li>
                         {% endif %}
-                        {% if process %}
+                        {% if process_block.is_active %}
                             <li><a href="#process" data-toggle="collapse"
                                    data-target=".navbar-collapse">ПРОЦЕСС</a>
                             </li>
                         {% endif %}
-                        {% if workExperience %}
+                        {% if work_experience_block.is_active %}
                             <li><a href="#work-experience"
                                    data-toggle="collapse"
                                    data-target=".navbar-collapse">ОПЫТ
                                 РАБОТЫ</a></li>
                         {% endif %}
-                        {% if services %}
+                        {% if service_block.is_active %}
                             <li><a href="#services" data-toggle="collapse"
                                    data-target=".navbar-collapse">УСЛУГИ</a>
                             </li>
                         {% endif %}
-                        {% if portfolio %}
+                        {% if portfolio_block.is_active %}
                             <li><a href="#portfolio" data-toggle="collapse"
                                    data-target=".navbar-collapse">ПОРТФОЛИО</a>
                             </li>
@@ -622,8 +622,8 @@
                                 <a href="{{ record.url }}" class=""
                                    target="_blank">
                                     <img src="{{ record.image.url }}"
-                                         class="img-responsive"
-                                         alt="{{ record.image.fields.description }}">
+                                         class="img-responsive">
+{#                                         alt="{{ record.image.fields.description }}">#}
                                     <div class="heading">{{ record.header }}</div>
                                     <div class="category">{{ record.portfolio_type|join:", " }}</div>
                                 </a>
@@ -811,7 +811,7 @@
                 <div class="col-md-4 {% if settings.show_animation %}animated{% endif %}"
                      data-animation="fadeInRight" data-animation-delay="300">
                     <div class="link-btn-2"><a href="{{ cv_block.cv.url }}"><i
-                            class="fa fa-download"></i> СКАЧАТЬ РЕЗЮМЕ</a></div>
+                            class="fa fa-download"></i> РЕЗЮМЕ</a></div>
                 </div>
                 <!-- Download CV Button Ends -->
             </div>
@@ -1004,10 +1004,9 @@
     <script type="text/javascript"
             src="{% static 'main/js/progress-bars/jquery.donutchart.js' %}"></script>
     <script>
-        	{% for record in skill %}
+            {% for record in skill_block.records.all %}
                 $("#donutchart{{ record.index }}").donutchart("animate");
             {% endfor %}
-
     </script>
     <!-- Retina -->
     <script type="text/javascript"

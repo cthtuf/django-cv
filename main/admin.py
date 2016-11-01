@@ -9,7 +9,7 @@ from .models import (AboutMeBlock, AwardsBlock, AwardRecord, CVBlock,
                      SkillRecord, SlideRecord,
                      SocialRecord, TestimonialRecord, TestimonialsBlock,
                      VideoBlock,
-                     WorkExperienceBlock, WorkExperienceRecord, )
+                     WorkExperienceBlock, WorkExperienceRecord, SEO)
 
 admin.site.register(AboutMeBlock)
 admin.site.register(AwardsBlock)
@@ -36,3 +36,4 @@ admin.site.register(TestimonialsBlock)
 admin.site.register(VideoBlock)
 admin.site.register(WorkExperienceBlock)
 admin.site.register(WorkExperienceRecord)
+admin.site.register(SEO)

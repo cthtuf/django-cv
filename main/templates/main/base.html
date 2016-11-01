@@ -33,32 +33,20 @@
 {
   "@context": "http://schema.org",
   "@type": "Person",
-  "name": "{{ commonData.aboutFullName }}",
-  "jobTitle": "{{ commonData.aboutJobTitle }}",
-  "telephone" : "{{ commonData.aboutPhone }}",
-  "image": "{{ commonData.siteImage }}",
-  "description" : "{{ commonData.siteDescription }}",
-  "url": "{{ commonData.siteUrl }}",
+  "name": "{{ about_me_block.full_name }}",
+  "jobTitle": "{{ about_me_block.profession }}",
+  "telephone" : "{{ about_me_block.phone }}",
+  "image": "{{ seo.site_image.url }}",
+  "description" : "{{ seo.site_description }}",
+  "url": "{{ seo.site_url }}",
   "sameAs": [
-    {% if commonData.socialFacebook %}
-    "{{ commonData.socialFacebook }}",
-    {% endif %}
-    {% if commonData.socialLinkedIn %}
-    "{{ commonData.socialLinkedIn }}",
-    {% endif %}
-    {% if commonData.socialVk %}
-    " {{ commonData.socialVk }}",
-    {% endif %}
-    {% if commonData.socialGooglePlus %}
-    "{{ commonData.socialGooglePlus }}",
-    {% endif %}
-    {% if commonData.socialInstagram %}
-    "{{ commonData.socialInstagram }}",
-    {% endif %}
+    {% for record in get_in_touch_block.records.all %}
+    "{{ record.link}}",
+    {% endfor %}
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "{{ commonData.aboutAddress }}"
+    "streetAddress": "{{ about_me_block.address }}"
   }
 }
 
@@ -76,17 +64,17 @@
                 <div class="col-lg-6 col-lg-offset-3">
                     {% block copyright %}
                         <!-- Copyright Starts -->
-                        <div class="desc {% if commonData.showAnimation %}animated{% endif %}"
+                        <div class="desc {% if settings.show_animation %}animated{% endif %}"
                              data-animation="fadeInUp"
                              data-animation-delay="200">
-                            © {% now "Y" %}. {{ commonData.aboutFullName }}
+                            © {% now "Y" %}. {{ about_me_block.full_name }}
                         </div>
                         <!-- Copyright Ends -->
                     {% endblock %}
                     <div class="line"></div>
                     <!-- ToTop Starts -->
                     <a href="#"
-                       class="scrollup {% if commonData.showAnimation %}animated{% endif %}"
+                       class="scrollup {% if settings.show_animation %}animated{% endif %}"
                        data-animation="fadeInUp" data-animation-delay="300"><i
                             class="fa fa-angle-double-up"></i></a>
                     <!-- ToTop Ends -->
