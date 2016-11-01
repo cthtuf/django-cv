@@ -3,28 +3,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% block head %}
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="description" content="{{ commonData.siteDescription }}">
-    <meta name="author" content="{{ commonData.aboutFullName }}">
-    <meta name="og:title" content="{{ commonData.siteTitle }}">
-    <meta name="og:type" content="website">
-    <meta name="og:url" content="{{ commonData.siteUrl }}">
-    <meta name="og:image" content="{{ commonData.siteOgImage.url }}">
-    <meta name="og:description" content="{{ commonData.siteDescription }}">
-    <link rel="shortcut icon" href="{{ commonData.siteFavicon.url }}">
-    {% block title %}<title>{{ commonData.siteTitle }}</title>{% endblock %}
-    <!-- ALL STYLESHEETS -->
-    <link href="{% static 'main/css/all-stylesheet.css' %}?1" rel="stylesheet" type="text/css">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-    {% block header_styles %}
+    {% block head %}
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="description" content="{{ commonData.siteDescription }}">
+        <meta name="author" content="{{ commonData.aboutFullName }}">
+        <meta name="og:title" content="{{ commonData.siteTitle }}">
+        <meta name="og:type" content="website">
+        <meta name="og:url" content="{{ commonData.siteUrl }}">
+        <meta name="og:image" content="{{ commonData.siteOgImage.url }}">
+        <meta name="og:description" content="{{ commonData.siteDescription }}">
+        <link rel="shortcut icon" href="{{ commonData.siteFavicon.url }}">
+        {% block title %}<title>{{ commonData.siteTitle }}</title>{% endblock %}
+        <!-- ALL STYLESHEETS -->
+        <link href="{% static 'main/css/all-stylesheet.css' %}?1"
+              rel="stylesheet" type="text/css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        {% block header_styles %}
+        {% endblock %}
     {% endblock %}
-{% endblock %}
 </head>
 <body>
 <script type="application/ld+json">
@@ -59,41 +61,43 @@
     "streetAddress": "{{ commonData.aboutAddress }}"
   }
 }
+
 </script>
 {% block page %}
-	{% block content %}
-	{% endblock %}
+    {% block content %}
+    {% endblock %}
 {% endblock %}
 
 
 {% block footer %}
-	<section id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3">
-                    	{% block copyright %}
+    <section id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    {% block copyright %}
                         <!-- Copyright Starts -->
-                        <div class="desc {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">
-							© {% now "Y" %}. {{ commonData.aboutFullName }}
+                        <div class="desc {% if commonData.showAnimation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">
+                            © {% now "Y" %}. {{ commonData.aboutFullName }}
                         </div>
                         <!-- Copyright Ends -->
-                        {% endblock %}
-						<div class="line"></div>
-                        <!-- ToTop Starts -->
-                        <a href="#" class="scrollup {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-angle-double-up"></i></a> 
-                        <!-- ToTop Ends -->
-                    </div>
+                    {% endblock %}
+                    <div class="line"></div>
+                    <!-- ToTop Starts -->
+                    <a href="#"
+                       class="scrollup {% if commonData.showAnimation %}animated{% endif %}"
+                       data-animation="fadeInUp" data-animation-delay="300"><i
+                            class="fa fa-angle-double-up"></i></a>
+                    <!-- ToTop Ends -->
                 </div>
             </div>
-        </section>
-        <!-- /.FOOTER --> 
-        
-        <!-- JAVASCRIPTS STARTS
-            ========================================================================= --> 
-        <!-- Bootstrap --> 
-        <script src="{% static 'main/js/jquery-1.11.0.min.js' %}"></script> 
-        <script src="{% static 'main/js/bootstrap.min.js' %}"></script> 
-        {% block footer_scripts %}
-        {% endblock %}
+        </div>
+    </section>
+    <!-- /.FOOTER -->
+    <script src="{% static 'main/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    {% block footer_scripts %}
+    {% endblock %}
 {% endblock %}
 </body>

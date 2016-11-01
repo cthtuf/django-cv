@@ -1,65 +1,41 @@
-from contentful.cda.client import Client
 from django.shortcuts import render
 
 from .models import *
 
 
-def order_by_index(obj):
-    '''
-    Hardcoded sort method based on the field 'index' in my content models in Contentful.
-    Used because of contentful.py doesn't have it
-    '''
-
-    return sorted(obj, key=lambda o: o.index)
-
-
-# Create your views here.
 def index(request):
-    cfClient = Client(
-        '82mi4zooxljq',
-        '7f86a46952bf2432efe06a21ed02a3d481ec0924566ff1bd11be04822d936b12',
-        custom_entries=[
-            MainSlider,
-            Awards,
-            CommonData,
-            Education,
-            Portfolio,
-            Process,
-            Service,
-            Skill,
-            Testimonials,
-            WorkExperience,
-        ]
-    )
-    mainSlider = order_by_index(cfClient.fetch(MainSlider).all())
-    awards = order_by_index(cfClient.fetch(Awards).all())
-    commonData = cfClient.fetch(CommonData).first()
-    education = order_by_index(cfClient.fetch(Education).all())
-    portfolio = order_by_index(cfClient.fetch(Portfolio).all())
-    process = order_by_index(cfClient.fetch(Process).all())
-    service = order_by_index(cfClient.fetch(Service).all())
-    skill = order_by_index(cfClient.fetch(Skill).all())
-    testimonials = order_by_index(cfClient.fetch(Testimonials).all())
-    workExperience = order_by_index(cfClient.fetch(WorkExperience).all())
-
-    portfolioTypes = []
-    for rec in portfolio:
-        for pt in rec.portfolioType:
-            if pt not in portfolioTypes:
-                portfolioTypes.append(pt)
+    slider_block = MainSliderBlock.objects.first()
+    awards_block = AwardsBlock.objects.first()
+    education_block = EducationBlock.objects.first()
+    portfolio_block = PortfolioBlock.objects.first()
+    process_block = PortfolioBlock.objects.first()
+    service_block = ServiceBlock.objects.first()
+    skill_block = SkillBlock.objects.first()
+    testimonials_block = TestimonialsBlock.objects.first()
+    work_experience_block = WorkExperienceBlock.objects.first()
+    video_block = VideoBlock.objects.filter()
+    portfolio_types = PortfolioType.objects.all()
+    get_in_touch_block = GetInTouchBlock.objects.first()
+    cv_block = CVBlock.objects.first()
+    about_me_block = AboutMeBlock.objects.first()
+    settings = Settings.objects.all()
 
     context = {
-        'mainSlider': mainSlider,
-        'awards': awards,
-        'commonData': commonData,
-        'education': education,
-        'portfolio': portfolio,
-        'portfolioTypes': portfolioTypes,
-        'process': process,
-        'service': service,
-        'skill': skill,
-        'testimonials': testimonials,
-        'workExperience': workExperience,
+        'slider_block': slider_block,
+        'awards_block': awards_block,
+        'education_block': education_block,
+        'portfolio_block': portfolio_block,
+        'portfolio_types': portfolio_types,
+        'service_block': service_block,
+        'process_block': process_block,
+        'skill_block': skill_block,
+        'video_block': video_block,
+        'testimonials_block': testimonials_block,
+        'work_experience_block': work_experience_block,
+        'get_in_touch_block': get_in_touch_block,
+        'cv_block': cv_block,
+        'about_me_block': about_me_block,
+        'settings': settings,
     }
     return render(request, 'main/index.html', context)
 

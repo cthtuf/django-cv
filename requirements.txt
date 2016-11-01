@@ -1,7 +1,7 @@
-Django==1.9.7
-contentful.py==0.9.3
-enum34==1.1.1
-python-dateutil==2.3
-requests==2.4.3
-six==1.10.0
-django-debug-toolbar==1.4
+Django
+python-dateutil
+requests
+six
+django-debug-toolbar
+django-admin-tools
+Pillow
