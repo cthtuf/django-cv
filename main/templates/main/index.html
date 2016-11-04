@@ -201,7 +201,7 @@
     <!-- /.NAVIGATION -->
     <!-- ABOUT US STARTS
         ========================================================================= -->
-    {% if about_block.is_active %}
+    {% if about_me_block.is_active %}
     <section id="about">
         <div class="container">
             <!-- Header Starts -->
@@ -209,14 +209,14 @@
                 <div class="col-md-8 col-md-offset-2 section-heading">
                     <div class="heading {% if settings.show_animation %}animated{% endif %}"
                          data-animation="fadeInUp" data-animation-delay="100">
-                        ABOUT ME
+                        ОБО МНЕ
                     </div>
                     <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
                         data-animation="fadeInUp" data-animation-delay="300"><i
                             class="fa fa-briefcase"></i></h1>
                     <div class="description {% if settings.show_animation %}animated{% endif %}"
                          data-animation="fadeIn"
-                         data-animation-delay="400">{{ about_block.short_info }}</div>
+                         data-animation-delay="400">{{ about_me_block.short_info }}</div>
                 </div>
             </div>
             <!-- Header Ends -->
@@ -226,16 +226,16 @@
                 <div class="col-md-3 personal-info col-left {% if settings.show_animation %}animated{% endif %}"
                      data-animation="fadeInRight" data-animation-delay="300">
                     <div class="line1">ИМЯ<br>
-                        <span class="line2">{{ about_block.full_name }}</span>
+                        <span class="line2">{{ about_me_block.full_name }}</span>
                     </div>
                     <div class="line1">ВОЗРАСТ<br>
-                        <span class="line2">{{ about_block.birthday }}</span>
+                        <span class="line2">{{ about_me_block.birthday }}</span>
                     </div>
                     <div class="line1">МЕСТО РОЖДЕНИЯ<br>
-                        <span class="line2">{{ about_block.birthplace }}</span>
+                        <span class="line2">{{ about_me_block.birthplace }}</span>
                     </div>
                     <div class="line1">ХОББИ<br>
-                        <span class="line2">{{ about_block.hobbies }}</span>
+                        <span class="line2">{{ about_me_block.hobbies }}</span>
                     </div>
                 </div>
                 <!-- Left Column Ends -->
@@ -246,7 +246,7 @@
                         <div class="pic owl-carousel" id="my-pic-carousel">
 {#                            {% for photo in about_block.aboutPhotos %}#}
 {#                                {% if photo.url %}#}
-                                    <div><img src="{{ about_block.photo.url }}"
+                                    <div><img src="{{ about_me_block.photo.url }}"
                                               class="img-responsive">
 {#                                              alt="{{ photo.fields.description }}" >#}
                                     </div>
@@ -260,16 +260,16 @@
                 <div class="col-md-3 personal-info col-right {% if settings.show_animation %}animated{% endif %}"
                      data-animation="fadeInLeft" data-animation-delay="300">
                     <div class="line1">АДРЕС<br>
-                        <span class="line2">{{ about_block.address }}</span>
+                        <span class="line2">{{ about_me_block.address }}</span>
                     </div>
                     <div class="line1">ТЕЛЕФОН<br>
-                        <span class="line2">{{ about_block.phone}}</span>
+                        <span class="line2">{{ about_me_block.phone}}</span>
                     </div>
                     <div class="line1">EMAIL<br>
-                        <span class="line2">{{ about_block.email }}</span>
+                        <span class="line2">{{ about_me_block.email }}</span>
                     </div>
                     <div class="line1">SKYPE<br>
-                        <span class="line2">{{ about_block.skype }}</span>
+                        <span class="line2">{{ about_me_block.skype }}</span>
                     </div>
                 </div>
                 <!-- Right Column Ends -->
@@ -279,7 +279,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 {% if settings.show_animation %}animated{% endif %}"
                      data-animation="fadeInUp" data-animation-delay="300">
-                    <div class="intro">{{ about_block.long_info }}</div>
+                    <div class="intro">{{ about_me_block.long_info }}</div>
                 </div>
             </div>
             {% if settings.show_section_buttons %}
@@ -480,11 +480,13 @@
                 <!-- Education Timeline Starts -->
                 <div class="work-experience-timeline {% if settings.show_animation %}animated{% endif %}"
                      data-animation="fadeInUp" data-animation-delay="300">
+                {% for record in work_experience_block.records.all %}
+                    {% if not forloop.counter|divisibleby:2 %}
                     <div class="row">
                         <!-- Left Column Starts -->
-                        {% for record in work_experience_block.records.all %}
-                            <div class="col-md-6 col-xs-6">
-                                <div class="{% if forloop.counter|divisibleby:2 %}col-left{% else %}col-right{% endif %}">
+                    {% endif %}
+                            <div class="col-md-6 col-xs-6 col-lg-6">
+                                <div class="{% cycle 'col-left' 'col-right' %}">
                                     <div class="arrow"></div>
                                     <div class="company-name">{{ record.company_name }}</div>
                                     <div class="designation">{{ record.position }}</div>
@@ -495,9 +497,11 @@
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
                         <!-- Left Column Ends -->
+                    {% if forloop.counter|divisibleby:2 %}
                     </div>
+                    {% endif %}
+                {% endfor %}
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
