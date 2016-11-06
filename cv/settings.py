@@ -179,7 +179,7 @@ PIPELINE = {
                 'main/owl-carousel/owl-carousel/owl.theme.css',
                 'main/css/portfolio/isotope-style.css',
                 'main/lightbox/ekko-lightbox.css',
-                'main/css/colors/mehroon.css',
+                'main/css/colors/green.css',
             ),
             'output_filename': 'main/css/styles.css',
         },
