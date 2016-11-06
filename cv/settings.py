@@ -26,7 +26,7 @@ SECRET_KEY = '4v25^y9db^8uxm5_v%4-0uswnowgu92!d#&8%u*(b%on6@nngf'
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['julia-designer.pw', '127.0.0.1', ]
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
