@@ -3,7 +3,7 @@ from django.views.decorators.cache import cache_page
 
 from .models import *
 
-@cache_page(2592000)
+@cache_page(60)
 def index(request):
     slider_block = MainSliderBlock.objects.first()
     awards_block = AwardsBlock.objects.first()

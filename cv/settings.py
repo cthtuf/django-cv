@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4v25^y9db^8uxm5_v%4-0uswnowgu92!d#&8%u*(b%on6@nngf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['julia-designer.pw', '127.0.0.1', ]
@@ -163,7 +163,7 @@ STATICFILES_FINDERS = [
 
 PIPELINE = {
     'PIPELINE_ENABLED': not DEBUG,
-    'DISABLE_WRAPPER': True,
+    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
     'STYLESHEETS': {
         'styles': {
             'source_filenames': (
@@ -187,7 +187,7 @@ PIPELINE = {
     'JAVASCRIPT': {
         'scripts': {
             'source_filenames': (
-                'main/js/jquery-1.11.0.min.js',
+                'main/js/jquery-1.11.2.js',
                 'main/js/bootstrap.min.js',
                 'main/js/animation/jquery.appear.js',
                 'main/js/contact/contact-form.js',
