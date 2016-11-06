@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'main',
     'easy_thumbnails',
+    'pipeline',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -150,12 +151,64 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'static'),
 # )
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 #STATICFILES_DIRS = ( os.path.join('static'), )
 
-#STATICFILES_FINDERS = [
-#    "django.contrib.staticfiles.finders.FileSystemFinder",
-#    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-#]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+]
+
+PIPELINE = {
+    'PIPELINE_ENABLED': not DEBUG,
+    'DISABLE_WRAPPER': True,
+    'STYLESHEETS': {
+        'styles': {
+            'source_filenames': (
+                'main/css/bootstrap/bootstrap.min.css',
+                'main/css/animations/animate.min.css',
+                #'fonts/font-awesome/css/font-awesome.css',
+                'main/fonts/font-awesome/css/font-awesome.min.css',
+                'main/rs-plugin/css/settings.css',
+                'main/rs-plugin/css/KenBurns.css',
+                'main/css/stylesheet.css',
+                'main/css/hide-show.css',
+                'main/owl-carousel/owl-carousel/owl.carousel.css',
+                'main/owl-carousel/owl-carousel/owl.theme.css',
+                'main/css/portfolio/isotope-style.css',
+                'main/lightbox/ekko-lightbox.css',
+                'main/css/colors/mehroon.css',
+            ),
+            'output_filename': 'main/css/styles.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'scripts': {
+            'source_filenames': (
+                'main/js/jquery-1.11.0.min.js',
+                'main/js/bootstrap.min.js',
+                'main/js/animation/jquery.appear.js',
+                'main/js/contact/contact-form.js',
+                'main/lightbox/ekko-lightbox.js',
+                'main/js/isotope/jquery.isotope.min.js',
+                'main/js/isotope/custom-isotope.js',
+                'main/rs-plugin/js/jquery.themepunch.plugins.min.js',
+                'main/rs-plugin/js/jquery.themepunch.revolution.js',
+                'main/owl-carousel/owl-carousel/owl.carousel.js',
+                'main/js/custom.js',
+                'main/js/parallex/script.js',
+                'main/js/nav/jquery.scrollTo.js',
+                'main/js/nav/jquery.nav.js',
+                'main/js/sticky/jquery.sticky.js',
+                'main/js/progress-bars/jquery.donutchart.js',
+                'main/js/retina/retina.js',
+                'main/js/jquery.fitvids.js',
+            ),
+            'output_filename': 'main/js/scripts.js',
+        }
+    }
+}
 
 INTERNAL_IPS = ('127.0.0.1', )

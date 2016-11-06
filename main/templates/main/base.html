@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load thumbnail %}
-
+{% load pipeline %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +17,7 @@
         <meta name="og:description" content="{{ seo.site_description }}">
         <link rel="shortcut icon" href="{{ seo.favicon.url }}">
         {% block title %}<title>{{ about_me_block.full_name }} &mdash; {{ about_me_block.profession }}</title>{% endblock %}
-        <!-- ALL STYLESHEETS -->
-        <link href="{% static 'main/css/all-stylesheet.css' %}?1"
-              rel="stylesheet" type="text/css">
+        {% stylesheet 'styles' %} {# django-pipeline styles, check settings #}
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -84,8 +82,7 @@
         </div>
     </section>
     <!-- /.FOOTER -->
-    <script src="{% static 'main/js/jquery-1.11.0.min.js' %}"></script>
-    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    {% javascript 'scripts' %} {# django-pipeline scripts, check settings #}
     {% block footer_scripts %}
     {% endblock %}
 {% endblock %}

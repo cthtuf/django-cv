@@ -960,68 +960,31 @@
 {% endblock %}
 
 {% block footer_scripts %}
-    <!-- Animation -->
-    <script type="text/javascript"
-            src="{% static 'main/js/animation/jquery.appear.js' %}"></script>
-    <!-- AJAX Contact Form -->
-    <script type="text/javascript"
-            src="{% static 'main/js/contact/contact-form.js' %}"></script>
-    <!-- Lightbox -->
-    <script src="{% static 'main/lightbox/ekko-lightbox.js' %}"></script>
-    <!-- Isotope -->
-    <script src="{% static 'main/js/isotope/jquery.isotope.min.js' %}"></script>
-    <script src="{% static 'main/js/isotope/custom-isotope.js' %}"></script>
-    <!-- Slider Revolution 4.x Scripts -->
-    <script type="text/javascript"
-            src="{% static 'main/rs-plugin/js/jquery.themepunch.plugins.min.js' %}"></script>
-    <script type="text/javascript"
-            src="{% static 'main/rs-plugin/js/jquery.themepunch.revolution.js' %}"></script>
     <script>
-            var revapi;
-            		jQuery(document).ready(function() {
-            
-            			   revapi = jQuery('.tp-banner').revolution(
-            				{
-            					delay:15000,
-            					startwidth:1170,
-            					startheight:500,
-            					hideThumbs:10,
-            					fullWidth:"off",
-            					fullScreen:"on",
-            					fullScreenOffsetContainer: "",
-            					hideCaptionAtLimit:400            					
-            				});
-                            $('.no-follow').on('click', function(e){
-                                e.preventDefault();
-                            });
-            		});	//ready	
+    <!-- Animation -->
+        var revapi;
+        jQuery(document).ready(function() {
+            revapi = jQuery('.tp-banner').revolution({
+                delay:15000,
+                startwidth:1170,
+                startheight:500,
+                hideThumbs:10,
+                fullWidth:"off",
+                fullScreen:"on",
+                fullScreenOffsetContainer: "",
+                hideCaptionAtLimit:400
+            });
 
+            $('.no-follow').on('click', function(e){
+                e.preventDefault();
+            });
+
+        {% for record in skill_block.records.all %}
+            $("#donutchart{{ record.index }}").donutchart("animate");
+        {% endfor %}
+        });//ready
     </script>
     <!-- Owl Carousel -->
-    <script src="{% static 'main/owl-carousel/owl-carousel/owl.carousel.js' %}"></script>
-    <!-- Custom -->
-    <script src="{% static 'main/js/custom.js' %}"></script>
-    <!-- Parallex -->
-    <script src="{% static 'main/js/parallex/script.js' %}"></script>
-    <!-- ScrollTo -->
-    <script src="{% static 'main/js/nav/jquery.scrollTo.js' %}"></script>
-    <script src="{% static 'main/js/nav/jquery.nav.js' %}"></script>
-    <!-- Sticky -->
-    <script type="text/javascript"
-            src="{% static 'main/js/sticky/jquery.sticky.js' %}"></script>
-    <!-- Donut Chart -->
-    <script type="text/javascript"
-            src="{% static 'main/js/progress-bars/jquery.donutchart.js' %}"></script>
-    <script>
-            {% for record in skill_block.records.all %}
-                $("#donutchart{{ record.index }}").donutchart("animate");
-            {% endfor %}
-    </script>
-    <!-- Retina -->
-    <script type="text/javascript"
-            src="{% static 'main/js/retina/retina.js' %}"></script>
-    <script type="text/javascript"
-            src="{% static 'main/js/jquery.fitvids.js' %}"></script>
 {% endblock %}
 
     
