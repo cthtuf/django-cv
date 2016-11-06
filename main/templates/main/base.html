@@ -8,15 +8,15 @@
         <meta charset="utf-8">
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-        <meta name="description" content="{{ commonData.siteDescription }}">
-        <meta name="author" content="{{ commonData.aboutFullName }}">
-        <meta name="og:title" content="{{ commonData.siteTitle }}">
+        <meta name="description" content="{{ seo.site_description }}">
+        <meta name="author" content="{{ about_me_block.full_name }}">
+        <meta name="og:title" content="{{ about_me_block.full_name }} &mdash; {{ about_me_block.profession }}">
         <meta name="og:type" content="website">
-        <meta name="og:url" content="{{ commonData.siteUrl }}">
-        <meta name="og:image" content="{{ commonData.siteOgImage.url }}">
-        <meta name="og:description" content="{{ commonData.siteDescription }}">
-        <link rel="shortcut icon" href="{{ commonData.siteFavicon.url }}">
-        {% block title %}<title>{{ commonData.siteTitle }}</title>{% endblock %}
+        <meta name="og:url" content="{{ seo.site_url }}">
+        <meta name="og:image" content="{{ seo.site_image.url }}">
+        <meta name="og:description" content="{{ seo.site_description }}">
+        <link rel="shortcut icon" href="{{ seo.favicon.url }}">
+        {% block title %}<title>{{ about_me_block.full_name }} &mdash; {{ about_me_block.profession }}</title>{% endblock %}
         <!-- ALL STYLESHEETS -->
         <link href="{% static 'main/css/all-stylesheet.css' %}?1"
               rel="stylesheet" type="text/css">
