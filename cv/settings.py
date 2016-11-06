@@ -24,8 +24,9 @@ SECRET_KEY = '4v25^y9db^8uxm5_v%4-0uswnowgu92!d#&8%u*(b%on6@nngf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['julia-designer.pw', ]
+ALLOWED_HOSTS = ['julia-designer.pw', '127.0.0.1', ]
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'debug_toolbar',
     'main',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -93,6 +95,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/2',
+    },
 }
 
 

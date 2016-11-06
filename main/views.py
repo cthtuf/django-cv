@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
 
 from .models import *
 
-
+@cache_page(2592000)
 def index(request):
     slider_block = MainSliderBlock.objects.first()
     awards_block = AwardsBlock.objects.first()

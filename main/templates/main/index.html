@@ -1,25 +1,32 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
+{% load thumbnail %}
+
 {% block header_styles %}
     <style>
         #myskills {
-            background-image: url({{skill_block.background.url}});
+            {% thumbnail skill_block.background 1920x1080 as img_th_skills %}
+            background-image: url({{img_th_skills.url}});
         }
 
         #process {
-            background-image: url({{process_block.background.url}});
+            {% thumbnail process_block.background 1920x1080 as img_th_process %}
+            background-image: url({{img_th_process.url}});
         }
 
         #services {
-            background-image: url({{service_block.background.url}});
+            {% thumbnail service_block.background 1920x1080 as img_th_service %}
+            background-image: url({{img_th_service.url}});
         }
 
         #video {
-            background-image: url({{video_block.background.url}});
+            {% thumbnail video_block.background 1920x1080 as img_th_video %}
+            background-image: url({{img_th_video.url}});
         }
 
         #awards {
-            background-image: url({{awards_block.background.url}});
+            {% thumbnail awards_block.background 1920x1080 as img_th_awards %}
+            background-image: url({{img_th_awards.url}});
         }
     </style>
 {% endblock %}
@@ -42,8 +49,9 @@
                             <li data-transition="fade" data-slotamount="5"
                                 data-masterspeed="500">
                                 <!-- MAIN IMAGE -->
-                                <img src="{{ slide.image.url }}"
-{#                                     alt="{{ slide.image.fields.description }}"#}
+                                {% thumbnail slide.image 1280x960 as img_th %}
+                                {#{{ img_th }}#}
+                                <img src="{{ img_th.url }}"
                                      data-bgfit="cover"
                                      data-bgposition="left top"
                                      data-bgrepeat="no-repeat">
@@ -111,7 +119,7 @@
                                      data-endspeed="500"
                                      data-endeasing="Power4.easeIn"
                                      data-captionhidden="off"
-                                     style="z-index: 7"><a href="#about"
+                                     style="z-index: 7"><a href="{{ cv_block.cv.url }}"
                                                            class="btn2"><i
                                         class="fa fa-download"></i> СКАЧАТЬ РЕЗЮМЕ</a></div>
                                 <!-- LAYER NR. 7 -->
@@ -244,14 +252,8 @@
                     <div class="col-md-8 col-md-offset-2 {% if settings.show_animation %}animated{% endif %}"
                          data-animation="fadeInUp" data-animation-delay="300">
                         <div class="pic owl-carousel" id="my-pic-carousel">
-{#                            {% for photo in about_block.aboutPhotos %}#}
-{#                                {% if photo.url %}#}
-                                    <div><img src="{{ about_me_block.photo.url }}"
-                                              class="img-responsive">
-{#                                              alt="{{ photo.fields.description }}" >#}
-                                    </div>
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
+                            {% thumbnail about_me_block.photo 400x400 as img_photo %}
+                            <div><img src="{{ img_photo.url }}" class="img-responsive"></div>
                         </div>
                     </div>
                 </div>
@@ -616,20 +618,20 @@
                      data-animation="fadeInUp" data-animation-delay="300"
                      id="container-thumbs">
                     <!-- Portfolio Item 1 Starts -->
-                    {% for record in portfolio_block.all %}
+                    {% for record in portfolio_block.records.all %}
                         <div class="col-xs-12 col-sm-6 col-md-3 items
-                        {% for pt in record.portfolio_type %}
+                        {% for pt in record.portfolio_type.all %}
                             {{ pt|cut:" " }}
                         {% endfor %}
                     ">
                             <div class="" data-project="{{ record.url }}">
-                                <a href="{{ record.url }}" class=""
+                                <a href="{{ record.url }}" class="{% if not record.url %}no-follow{% endif %}"
                                    target="_blank">
-                                    <img src="{{ record.image.url }}"
+                                   {% thumbnail record.image 400x400 as img_portfolio %}
+                                    <img src="{{ img_portfolio.url }}"
                                          class="img-responsive">
-{#                                         alt="{{ record.image.fields.description }}">#}
                                     <div class="heading">{{ record.header }}</div>
-                                    <div class="category">{{ record.portfolio_type|join:", " }}</div>
+                                    <div class="category">{{ record.portfolio_type.all|join:", " }}</div>
                                 </a>
                             </div>
                         </div>
@@ -678,10 +680,10 @@
                                     class="fa fa-play-circle-o"></i></a></div>
                         {% endif %}
                         {% if get_in_touch_block.sugnature %}
+                            {% thumbnail get_in_touch_block.sugnature 400x400 as img_signature %}
                             <div class="signature"><img
-                                    src="{{ get_in_touch_block.signature.url }}"
+                                    src="{{ img_signature.url }}"
                                     style="max-width:100%">
-{#                                    alt="{{ commonData.signature.fields.description }}">#}
                             </div>
                         {% endif %}
                     </div>
@@ -989,6 +991,9 @@
             					fullScreenOffsetContainer: "",
             					hideCaptionAtLimit:400            					
             				});
+                            $('.no-follow').on('click', function(e){
+                                e.preventDefault();
+                            });
             		});	//ready	
 
     </script>

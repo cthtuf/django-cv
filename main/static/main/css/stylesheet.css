@@ -665,7 +665,7 @@ section {
 .work-experience-timeline .col-left {
     text-align: right;
     margin-right: 30px;
-    margin-top: 6px;
+    margin-top: 46px;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
     padding: 10px;
 }
@@ -673,7 +673,7 @@ section {
 .work-experience-timeline .col-right {
     text-align: left;
     margin-left: 30px;
-    margin-top: 46px;
+    margin-top: 6px;
     padding: 10px;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
 }
@@ -685,7 +685,7 @@ section {
     width: 0;
     height: 0;
     right: 0px;
-    top: 0px;
+    top: 40px;
     position: absolute;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -700,7 +700,7 @@ section {
     width: 0;
     height: 0;
     left: 0px;
-    top: 40px;
+    top: 0px;
     position: absolute;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
