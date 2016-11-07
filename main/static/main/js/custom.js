@@ -1,11 +1,4 @@
-
-/************************************************************************************ MY PIC CAROUSEL STARTS */
-
-$(document).ready(function () {
-
-    //Sort random function
-
-    function random(owlSelector) {
+function random(owlSelector) {
         owlSelector.children().sort(function () {
             return Math.round(Math.random()) - 0.5;
         }).each(function () {
@@ -13,6 +6,7 @@ $(document).ready(function () {
         });
     }
 
+$(document).ready(function () {
     $("#my-pic-carousel").owlCarousel({
         autoPlay: 5000,
         slideSpeed: 500,
@@ -22,8 +16,8 @@ $(document).ready(function () {
         itemsTablet: [768, 1],
         itemsMobile: [479, 1],
         autoHeight: true,
-		pagination: false,
-		navigation: true,
+        pagination: false,
+        navigation: true,
         navigationText: [
         "<i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i>"
@@ -34,24 +28,6 @@ $(document).ready(function () {
         }*/
 
     });
-
-});
-
-
-
-/************************************************************************************ MY SKILLS CAROUSEL STARTS */
-
-$(document).ready(function () {
-
-    //Sort random function
-
-    function random(owlSelector) {
-        owlSelector.children().sort(function () {
-            return Math.round(Math.random()) - 0.5;
-        }).each(function () {
-            $(this).appendTo(owlSelector);
-        });
-    }
 
     $("#myskills-carousel").owlCarousel({
         autoPlay: 5000,
@@ -61,9 +37,9 @@ $(document).ready(function () {
         itemsDesktopSmall: [979, 4],
         itemsTablet: [768, 2],
         itemsMobile: [479, 1],
-        autoHeight: true,
-		pagination: true,
-		navigation: false,
+        autoHeight: false,
+        pagination: true,
+        navigation: false,
         navigationText: [
         "<i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i>"
@@ -74,23 +50,6 @@ $(document).ready(function () {
         }*/
 
     });
-
-});
-
-
-/************************************************************************************ MY SERVICES CAROUSEL STARTS */
-
-$(document).ready(function () {
-
-    //Sort random function
-
-    function random(owlSelector) {
-        owlSelector.children().sort(function () {
-            return Math.round(Math.random()) - 0.5;
-        }).each(function () {
-            $(this).appendTo(owlSelector);
-        });
-    }
 
     $("#services-carousel").owlCarousel({
         autoPlay: 5000,
@@ -101,8 +60,8 @@ $(document).ready(function () {
         itemsTablet: [768, 2],
         itemsMobile: [479, 1],
         autoHeight: true,
-		pagination: true,
-		navigation: false,
+        pagination: true,
+        navigation: false,
         navigationText: [
         "<i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i>"
@@ -113,24 +72,6 @@ $(document).ready(function () {
         }*/
 
     });
-
-});
-
-
-
-/************************************************************************************ AWARDS CAROUSEL STARTS */
-
-$(document).ready(function () {
-
-    //Sort random function
-
-    function random(owlSelector) {
-        owlSelector.children().sort(function () {
-            return Math.round(Math.random()) - 0.5;
-        }).each(function () {
-            $(this).appendTo(owlSelector);
-        });
-    }
 
     $("#awards-carousel").owlCarousel({
         autoPlay: 5000,
@@ -141,8 +82,8 @@ $(document).ready(function () {
         itemsTablet: [768, 2],
         itemsMobile: [479, 1],
         autoHeight: true,
-		pagination: true,
-		navigation: false,
+        pagination: true,
+        navigation: false,
         navigationText: [
         "<i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i>"
@@ -153,23 +94,6 @@ $(document).ready(function () {
         }*/
 
     });
-
-});
-
-
-/************************************************************************************ AWARDS CAROUSEL STARTS */
-
-$(document).ready(function () {
-
-    //Sort random function
-
-    function random(owlSelector) {
-        owlSelector.children().sort(function () {
-            return Math.round(Math.random()) - 0.5;
-        }).each(function () {
-            $(this).appendTo(owlSelector);
-        });
-    }
 
     $("#testimonials-carousel").owlCarousel({
         autoPlay: 5000,
@@ -180,8 +104,8 @@ $(document).ready(function () {
         itemsTablet: [768, 1],
         itemsMobile: [479, 1],
         autoHeight: true,
-		pagination: true,
-		navigation: false,
+        pagination: true,
+        navigation: false,
         navigationText: [
         "<i class='fa fa-angle-left'></i>",
         "<i class='fa fa-angle-right'></i>"
@@ -193,148 +117,68 @@ $(document).ready(function () {
 
     });
 
-});
-
-/************************************************************************************ TO TOP STARTS */
- 
- $(document).ready(function(){ 
-         
-             $(window).scroll(function(){
-                 if ($(this).scrollTop() > 100) {
-                     $('.scrollup').fadeIn();
-                 } else {
-                     $('.scrollup').fadeOut();
-                 }
-             }); 
-         
-             $('.scrollup').click(function(){
-                 $("html, body").animate({ scrollTop: 0 }, 600);
-                 return false;
-             });
-         
-         });	
-
-
-
-/************************************************************************************ SCROLL TO NAV. STARTS */
-
-$(document).ready(function() {
-	$('.nav').onePageNav({
-		filter: ':not(.external)',
-		begin: function() {
-		console.log('start')
-		},
-		end: function() {
-		console.log('stop')
-		}
-	});
-
-});
-
-
-/************************************************************************************ STICKY NAV. STARTS */
-
-$(window).load(function(){
-          $("#navigation").sticky({ topSpacing: 0 });
-		 // $("#navigation").sticky({ position: absolute });
-		 		
-        });
-
-
-/************************************************************************************ BOOTSTRAP LIGHTBOX STARTS */
-
- $(document).ready(function ($) {
-                // delegate calls to data-toggle="lightbox"
-                $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-                    event.preventDefault();
-                    return $(this).ekkoLightbox({
-                        onShown: function() {
-                            if (window.console) {
-                                return console.log('Checking our the events huh?');
-                            }
-                        }
-                    });
-                });
-
-                //Programatically call
-                $('#open-image').click(function (e) {
-                    e.preventDefault();
-                    $(this).ekkoLightbox();
-                });
-                $('#open-youtube').click(function (e) {
-                    e.preventDefault();
-                    $(this).ekkoLightbox();
-                });
-
-            });
-			
-
-/************************************************************************************ PAGE ANIMATED ITEMS STARTS */
-
-	jQuery(document).ready(function($) {
-	
-	'use strict';
-
-    	$('.animated').appear(function() {
-	        var elem = $(this);
-	        var animation = elem.data('animation');
-	        if ( !elem.hasClass('visible') ) {
-	        	var animationDelay = elem.data('animation-delay');
-	            if ( animationDelay ) {
-
-	                setTimeout(function(){
-	                    elem.addClass( animation + " visible" );
-	                }, animationDelay);
-
-	            } else {
-	                elem.addClass( animation + " visible" );
-	            }
-	        }
-	    });
-});	
-
-/************************************************************************************ PRELOADER STARTS */	
-
- jQuery(document).ready(function() {
-    $('#preloader').fadeOut('slow'); 
-});
-
-
-
-/************************************************************************************ SWITCHER CSS STARTS */ 
- 
-  $(document).ready(function() {
-"use strict";
-    $("#hide, #show").click(function () {
-        if ($("#show").is(":visible")) {
-           
-            $("#show").animate({
-                "margin-left": "-500px"
-            }, 500, function () {
-                $(this).hide();
-            });
-            
-            $("#switch").animate({
-                "margin-left": "0px"
-            }, 500).show();
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
         } else {
-            $("#switch").animate({
-                "margin-left": "-500px"
-            }, 500, function () {
-                $(this).hide();
-            });
-            $("#show").show().animate({
-                "margin-left": "0"
-            }, 500);
+            $('.scrollup').fadeOut();
         }
     });
-                      
-});
 
+    $('.scrollup').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
 
-/************************************************************************************ PORTFOLIO DETAIL STARTS */
+    $('.nav').onePageNav({
+        filter: ':not(.external)',
+        begin: function() {
+            console.log('start')
+        },
+        end: function() {
+            console.log('stop')
+        }
+    });
 
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        return $(this).ekkoLightbox({
+            onShown: function() {
+                if (window.console) {
+                    return console.log('Checking our the events huh?');
+                }
+            }
+        });
+    });
 
+    //Programatically call
+    $('#open-image').click(function (e) {
+        e.preventDefault();
+        $(this).ekkoLightbox();
+    });
+    $('#open-youtube').click(function (e) {
+        e.preventDefault();
+        $(this).ekkoLightbox();
+    });
+
+    $('.animated').appear(function() {
+        var elem = $(this);
+        var animation = elem.data('animation');
+        if ( !elem.hasClass('visible') ) {
+            var animationDelay = elem.data('animation-delay');
+            if ( animationDelay ) {
+
+                setTimeout(function(){
+                    elem.addClass( animation + " visible" );
+                }, animationDelay);
+
+            } else {
+                elem.addClass( animation + " visible" );
+            }
+        }
+    });
+
+    $('#preloader').fadeOut('slow');
 
     $('.image').click(function (event) {
         event.preventDefault();
@@ -374,10 +218,8 @@ $(window).load(function(){
 
     });
 
+});
 
-
-
-
-
-
-
+$(window).load(function(){
+    $("#navigation").sticky({ topSpacing: 0 });
+});

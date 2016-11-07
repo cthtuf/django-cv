@@ -1,111 +1,142 @@
 {% extends "main/base.html" %}
 {% load staticfiles %}
+{% load thumbnail %}
+
 {% block header_styles %}
-<style>
-	#myskills { background-image: url({{commonData.backgroundSkills.url}});}
-    #process { background-image : url({{commonData.backgroundProcess.url}});}
-    #services { background-image : url({{commonData.backgroundServices.url}});}
-    #video { background-image : url({{commonData.backgroundVideo.url}});}
-    #awards { background-image : url({{commonData.backgroundAwards.url}});}
-</style>
+    <style>
+        #myskills {
+            {% thumbnail skill_block.background 1920x1080 as img_th_skills %}
+            background-image: url({{img_th_skills.url}});
+        }
+
+        #process {
+            {% thumbnail process_block.background 1920x1080 as img_th_process %}
+            background-image: url({{img_th_process.url}});
+        }
+
+        #services {
+            {% thumbnail service_block.background 1920x1080 as img_th_service %}
+            background-image: url({{img_th_service.url}});
+        }
+
+        #video {
+            {% thumbnail video_block.background 1920x1080 as img_th_video %}
+            background-image: url({{img_th_video.url}});
+        }
+
+        #awards {
+            {% thumbnail awards_block.background 1920x1080 as img_th_awards %}
+            background-image: url({{img_th_awards.url}});
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-        <div id="preloader">
-            <div class="preloader">
-                <div class="cube1"></div>
-                <div class="cube2"></div>
-            </div>
+    <div id="preloader">
+        <div class="preloader">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
         </div>
-		{% if mainSlider %}
-		<!-- SLIDER STARTS ========================================================================= -->
+    </div>
+    {% if slider_block.is_active %}
+        <!-- SLIDER STARTS ========================================================================= -->
         <section id="slider" class="slider-bg-static">
             <div class="tp-banner-container">
-                <div class="tp-banner" >
+                <div class="tp-banner">
                     <ul>
-                    	{% for slide in mainSlider %}
-                        <!-- SLIDE NR. 1-->
-                        <li data-transition="fade" data-slotamount="5" data-masterspeed="500">
-                            <!-- MAIN IMAGE --> 
-                            <img src="{{ slide.image.url }}"  alt="{{ slide.image.fields.description }}" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat"> 
-                            <!-- LAYER NR. 1 -->
-                            <div class="tp-caption very_large_text customin customout"
-                                data-x="265"
-                                data-y="0"
-                                data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-                                data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                data-speed="600"
-                                data-start="1000"
-                                data-easing="Back.easeOut"
-                                data-endspeed="300"
-                                data-endeasing="Power1.easeIn"
-                                style="z-index: 2">{{ slide.header }}</div>
-                            <!-- LAYER NR. 2 -->
-                            <div class="tp-caption medium_text sft customout"
-                                data-x="center"
-                                data-y="120"
-                                data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                data-speed="600"
-                                data-start="2000"
-                                data-easing="Power4.easeOut"
-                                data-endspeed="300"
-                                data-endeasing="Power1.easeIn"
-                                data-captionhidden="off"
-                                style="z-index: 4">{{ slide.subHeader }}</div>
-                            <!-- LAYER NR. 4 -->
-                            <div class="tp-caption large_text skewfromleft customout"
-                                data-x="center"
-                                data-y="240"
-                                data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                data-speed="600"
-                                data-start="2500"
-                                data-end="5500"
-                                data-easing="Power4.easeOut"
-                                data-endspeed="300"
-                                data-endeasing="Power1.easeIn"
-                                data-captionhidden="off"
-                                style="z-index: 5">
-                                <p class="border">{{ slide.firstSlogan }}</p>
-                            </div>
-                            <!-- LAYER NR. 5 -->
-                            <div class="tp-caption large_text skewfromright customout"
-                                data-x="center"
-                                data-y="240"
-                                data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                data-speed="600"
-                                data-start="6500"                        
-                                data-easing="Power4.easeOut"
-                                data-endspeed="300"
-                                data-endeasing="Power1.easeIn"
-                                data-captionhidden="off"
-                                style="z-index: 6">
-                                <p class="border">{{ slide.secondSlogan }}</p>
-                            </div>
-                            <!-- LAYER NR. 6 -->
-                            <div class="tp-caption skewfromleftshort customout slider-buttons"
-                                data-x="295"
-                                data-y="435"
-                                data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                data-speed="600"
-                                data-start="3000"
-                                data-easing="Back.easeOut"
-                                data-endspeed="500"
-                                data-endeasing="Power4.easeIn"
-                                data-captionhidden="off"
-                                style="z-index: 7"><a href="#about" class="btn2"><i class="fa fa-download"></i> DOWNLOAD RESUME</a> </div>
-                            <!-- LAYER NR. 7 -->
-                            <div class="tp-caption skewfromleftshort customout slider-buttons"
-                                data-x="645"
-                                data-y="435"
-                                data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                                data-speed="600"
-                                data-start="3500"
-                                data-easing="Back.easeOut"
-                                data-endspeed="500"
-                                data-endeasing="Power4.easeIn"
-                                data-captionhidden="on"
-                                style="z-index: 8"><a href="#about" class="btn1"><i class="fa fa-briefcase"></i> ABOUT ME</a> </div>
-                        </li>
+                        {% for slide in slider_block.records.all %}
+                            <!-- SLIDE NR. 1-->
+                            <li data-transition="fade" data-slotamount="5"
+                                data-masterspeed="500">
+                                <!-- MAIN IMAGE -->
+                                {% thumbnail slide.image 1280x960 as img_th %}
+                                {#{{ img_th }}#}
+                                <img src="{{ img_th.url }}"
+                                     data-bgfit="cover"
+                                     data-bgposition="left top"
+                                     data-bgrepeat="no-repeat">
+                                <!-- LAYER NR. 1 -->
+                                <div class="tp-caption very_large_text customin customout"
+                                     data-x="265"
+                                     data-y="0"
+                                     data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="600"
+                                     data-start="1000"
+                                     data-easing="Back.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     style="z-index: 2">{{ slide.header }}</div>
+                                <!-- LAYER NR. 2 -->
+                                <div class="tp-caption medium_text sft customout"
+                                     data-x="center"
+                                     data-y="120"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="600"
+                                     data-start="2000"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off"
+                                     style="z-index: 4">{{ slide.subheader }}</div>
+                                <!-- LAYER NR. 4 -->
+                                <div class="tp-caption large_text skewfromleft customout"
+                                     data-x="center"
+                                     data-y="240"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="600"
+                                     data-start="2500"
+                                     data-end="5500"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off"
+                                     style="z-index: 5">
+                                    <p class="border">{{ slide.first_slogan }}</p>
+                                </div>
+                                <!-- LAYER NR. 5 -->
+                                <div class="tp-caption large_text skewfromright customout"
+                                     data-x="center"
+                                     data-y="240"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="600"
+                                     data-start="6500"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off"
+                                     style="z-index: 6">
+                                    <p class="border">{{ slide.second_slogan }}</p>
+                                </div>
+                                <!-- LAYER NR. 6 -->
+                                <div class="tp-caption skewfromleftshort customout slider-buttons"
+                                     data-x="295"
+                                     data-y="435"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="600"
+                                     data-start="3000"
+                                     data-easing="Back.easeOut"
+                                     data-endspeed="500"
+                                     data-endeasing="Power4.easeIn"
+                                     data-captionhidden="off"
+                                     style="z-index: 7"><a href="{{ cv_block.cv.url }}"
+                                                           class="btn2"><i
+                                        class="fa fa-download"></i> СКАЧАТЬ РЕЗЮМЕ</a></div>
+                                <!-- LAYER NR. 7 -->
+                                <div class="tp-caption skewfromleftshort customout slider-buttons"
+                                     data-x="645"
+                                     data-y="435"
+                                     data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                     data-speed="600"
+                                     data-start="3500"
+                                     data-easing="Back.easeOut"
+                                     data-endspeed="500"
+                                     data-endeasing="Power4.easeIn"
+                                     data-captionhidden="on"
+                                     style="z-index: 8"><a href="#about"
+                                                           class="btn1"><i
+                                        class="fa fa-briefcase"></i> ОБО МНЕ</a></div>
+                            </li>
                         {% endfor %}
                     </ul>
                     <div class="tp-bannertimer"></div>
@@ -113,672 +144,847 @@
             </div>
         </section>
         <!-- /. SLIDER ENDS -->
-        {% endif %}
-        <!-- NAVIGATION STARTS
-            ========================================================================= -->
-        <section id="navigation">
-            <div class="navbar navbar-inverse" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav pull-right">
-                            <li class="current"><a href="#slider" data-toggle="collapse" data-target=".navbar-collapse">TOP</a></li>
-                            <li><a href="#about" data-toggle="collapse" data-target=".navbar-collapse">ABOUT</a></li>
-                            {% if skills %}
-                                <li><a href="#myskills" data-toggle="collapse" data-target=".navbar-collapse">SKILLS</a></li>
-                            {% endif %}
-                            {% if education %}
-                                <li><a href="#education" data-toggle="collapse" data-target=".navbar-collapse">EDUCATION</a></li>
-                            {% endif %}
-                            {% if process %}
-                                <li><a href="#process" data-toggle="collapse" data-target=".navbar-collapse">PROCESS</a></li>
-                            {% endif %}
-                            {% if workExperience %}
-                                <li><a href="#work-experience" data-toggle="collapse" data-target=".navbar-collapse">WORK EXPERIENCE</a></li>
-                            {% endif %}
-                            {% if services %}
-                                <li><a href="#services" data-toggle="collapse" data-target=".navbar-collapse">SERVICES</a></li>
-                            {% endif %}
-                            {% if portfolio %}
-                                <li><a href="#portfolio" data-toggle="collapse" data-target=".navbar-collapse">PORTFOLIO</a></li>
-                            {% endif %}
-                            <li><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse">CONTACT</a></li>
-                        </ul>
-                    </div>
-                    <!--/.nav-collapse --> 
-                </div>
-            </div>
-        </section>
-        <!-- /.NAVIGATION --> 
-        <!-- ABOUT US STARTS
-            ========================================================================= -->
-        <section id="about">
+    {% endif %}
+    <!-- NAVIGATION STARTS
+        ========================================================================= -->
+    <section id="navigation">
+        <div class="navbar navbar-inverse" role="navigation">
             <div class="container">
-                <!-- Header Starts -->
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="100">ABOUT ME</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-briefcase"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="400">{{ commonData.aboutShortDescription }}</div>
-                    </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse"
+                            data-target=".navbar-collapse"><span
+                            class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span
+                            class="icon-bar"></span> <span
+                            class="icon-bar"></span></button>
                 </div>
-                <!-- Header Ends --> 
-                <!-- Row 1 Starts -->
-                <div class="row">
-                    <!-- Left Column Starts -->
-                    <div class="col-md-3 personal-info col-left {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInRight" data-animation-delay="300">
-                        <div class="line1">FULL NAME<br>
-                            <span class="line2">{{ commonData.aboutFullName}}</span> 
-                        </div>
-                        <div class="line1">BIRTHDAY<br>
-                            <span class="line2">{{ commonData.aboutBirthday }}</span> 
-                        </div>
-                        <div class="line1">BIRTH PLACE<br>
-                            <span class="line2">{{ commonData.aboutBirthPlace }}</span> 
-                        </div>
-                        <div class="line1">HOBBIES<br>
-                            <span class="line2">{{ commonData.aboutHobbies }}</span> 
-                        </div>
-                    </div>
-                    <!-- Left Column Ends -->
-                    <!-- Middle Column Starts -->
-                    <div class="col-md-6">
-                        <div class="col-md-8 col-md-offset-2 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
-                            <div class="pic owl-carousel" id="my-pic-carousel">
-                            	{% for photo in commonData.aboutPhotos %}
-                            		{% if photo.url %}
-                                	<div><img src="{{ photo.url }}" class="img-responsive" alt="{{ photo.fields.description }}"></div>
-                                	{% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Middle Column Ends -->
-                    <!-- Right Column Starts -->
-                    <div class="col-md-3 personal-info col-right {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInLeft" data-animation-delay="300">
-                        <div class="line1">ADDRESS<br>
-                            <span class="line2">{{ commonData.aboutAddress }}</span> 
-                        </div>
-                        <div class="line1">PHONE<br>
-                            <span class="line2">{{ commonData.aboutPhone }}</span> 
-                        </div>
-                        <div class="line1">EMAIL<br>
-                            <span class="line2">{{ commonData.aboutEmail }}</span> 
-                        </div>
-                        <div class="line1">WEB<br>
-                            <span class="line2">{{ commonData.aboutWebsite }}</span> 
-                        </div>
-                    </div>
-                    <!-- Right Column Ends -->
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="current"><a href="#slider"
+                                               data-toggle="collapse"
+                                               data-target=".navbar-collapse">НАВЕРХ</a>
+                        </li>
+                        <li><a href="#about" data-toggle="collapse"
+                               data-target=".navbar-collapse">ОБО МНЕ</a></li>
+                        {% if skill_block.is_active %}
+                            <li><a href="#myskills" data-toggle="collapse"
+                                   data-target=".navbar-collapse">НАВЫКИ</a>
+                            </li>
+                        {% endif %}
+                        {% if education_block.is_active %}
+                            <li><a href="#education" data-toggle="collapse"
+                                   data-target=".navbar-collapse">ОБРАЗОВАНИЕ</a>
+                            </li>
+                        {% endif %}
+                        {% if process_block.is_active %}
+                            <li><a href="#process" data-toggle="collapse"
+                                   data-target=".navbar-collapse">ПРОЦЕСС</a>
+                            </li>
+                        {% endif %}
+                        {% if work_experience_block.is_active %}
+                            <li><a href="#work-experience"
+                                   data-toggle="collapse"
+                                   data-target=".navbar-collapse">ОПЫТ
+                                РАБОТЫ</a></li>
+                        {% endif %}
+                        {% if service_block.is_active %}
+                            <li><a href="#services" data-toggle="collapse"
+                                   data-target=".navbar-collapse">УСЛУГИ</a>
+                            </li>
+                        {% endif %}
+                        {% if portfolio_block.is_active %}
+                            <li><a href="#portfolio" data-toggle="collapse"
+                                   data-target=".navbar-collapse">ПОРТФОЛИО</a>
+                            </li>
+                        {% endif %}
+                        <li><a href="#contact" data-toggle="collapse"
+                               data-target=".navbar-collapse">КОНТАКТЫ</a></li>
+                    </ul>
                 </div>
-                <!-- Row 1 Ends --> 
-                <!-- Row 2 Starts -->
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
-                        <div class="intro">{{ commonData.aboutLongDescription }}</div>
-                    </div>
-                </div>
-                {% if commonData.showSectionButtons %}
-                <div>
-                    <!-- Row 2 Ends --> 
-                    <!-- Button Starts -->
-                    <div class="link-btn"><a href="#myskills"><i class="fa fa-rocket"></i> MY SKILLS</a></div>
-                    <!-- Button Ends --> 
-                </div>
-                {% endif %}
+                <!--/.nav-collapse -->
             </div>
-        </section>
-        <!-- /.ABOUT --> 
-        <!-- MY SKILLS STARTS
-            ========================================================================= -->
-        {% if skills %}
+        </div>
+    </section>
+    <!-- /.NAVIGATION -->
+    <!-- ABOUT US STARTS
+        ========================================================================= -->
+    {% if about_me_block.is_active %}
+    <section id="about">
+        <div class="container">
+            <!-- Header Starts -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 section-heading">
+                    <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="100">
+                        ОБО МНЕ
+                    </div>
+                    <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                        data-animation="fadeInUp" data-animation-delay="300"><i
+                            class="fa fa-briefcase"></i></h1>
+                    <div class="description {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeIn"
+                         data-animation-delay="400">{{ about_me_block.short_info }}</div>
+                </div>
+            </div>
+            <!-- Header Ends -->
+            <!-- Row 1 Starts -->
+            <div class="row">
+                <!-- Left Column Starts -->
+                <div class="col-md-3 personal-info col-left {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInRight" data-animation-delay="300">
+                    <div class="line1">ИМЯ<br>
+                        <span class="line2">{{ about_me_block.full_name }}</span>
+                    </div>
+                    <div class="line1">ВОЗРАСТ<br>
+                        <span class="line2">{{ about_me_block.birthday }}</span>
+                    </div>
+                    <div class="line1">МЕСТО РОЖДЕНИЯ<br>
+                        <span class="line2">{{ about_me_block.birthplace }}</span>
+                    </div>
+                    <div class="line1">ХОББИ<br>
+                        <span class="line2">{{ about_me_block.hobbies }}</span>
+                    </div>
+                </div>
+                <!-- Left Column Ends -->
+                <!-- Middle Column Starts -->
+                <div class="col-md-6">
+                    <div class="col-md-8 col-md-offset-2 {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="300">
+                        <div class="pic owl-carousel" id="my-pic-carousel">
+                            {% thumbnail about_me_block.photo 400x400 as img_photo %}
+                            <div><img src="{{ img_photo.url }}" class="img-responsive"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Middle Column Ends -->
+                <!-- Right Column Starts -->
+                <div class="col-md-3 personal-info col-right {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInLeft" data-animation-delay="300">
+                    <div class="line1">АДРЕС<br>
+                        <span class="line2">{{ about_me_block.address }}</span>
+                    </div>
+                    <div class="line1">ТЕЛЕФОН<br>
+                        <span class="line2">{{ about_me_block.phone}}</span>
+                    </div>
+                    <div class="line1">EMAIL<br>
+                        <span class="line2">{{ about_me_block.email }}</span>
+                    </div>
+                    <div class="line1">SKYPE<br>
+                        <span class="line2">{{ about_me_block.skype }}</span>
+                    </div>
+                </div>
+                <!-- Right Column Ends -->
+            </div>
+            <!-- Row 1 Ends -->
+            <!-- Row 2 Starts -->
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
+                    <div class="intro">{{ about_me_block.long_info }}</div>
+                </div>
+            </div>
+            {% if settings.show_section_buttons %}
+                <div>
+                    <!-- Row 2 Ends -->
+                    <!-- Button Starts -->
+                    <div class="link-btn"><a href="#myskills"><i
+                            class="fa fa-rocket"></i> МОИ НАВЫКИ</a></div>
+                    <!-- Button Ends -->
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+    <!-- /.ABOUT -->
+    <!-- MY SKILLS STARTS
+        ========================================================================= -->
+    {% if skill_block.is_active %}
         <section id="myskills" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">MY SKILLS</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-rocket"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSkills }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">МОИ НАВЫКИ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-rocket"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="300">{{ skill_block.description }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
-                {% if skill %}
-                <div class="owl-carousel {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300" id="myskills-carousel">
-                	{% for record in skill %}
-                    <div class="items">
-                        <div id="donutchart{{ record.index }}" data-percent="{{ record.persent }}"> </div>
-                        <br>
-                        {{ record.title }}
+                {% if skill_block.is_active %}
+                    <div class="owl-carousel {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeIn" data-animation-delay="300"
+                         id="myskills-carousel">
+                        {% for record in skill_block.records.all %}
+                            <div class="items">
+                                <div id="donutchart{{ record.index }}"
+                                     data-percent="{{ record.persent }}"></div>
+                                <br>
+                                {{ record.title }}
+                            </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
                 {% endif %}
 
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#education"><i class="fa fa-book"></i> EDUCATION</a></div>
-                <!-- Button Ends --> 
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="300"><a
+                            href="#education"><i class="fa fa-book"></i>
+                        ОБРАЗОВАНИЕ</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.MY SKILLS --> 
-        <!-- EDUCATION STARTS
-            ========================================================================= -->
-        {% if education %}
+    {% endif %}
+    <!-- /.MY SKILLS -->
+    <!-- EDUCATION STARTS
+        ========================================================================= -->
+    {% if education_block.is_active %}
         <section id="education">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">EDUCATION</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-book"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commondData.descriptionEducation }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ОБРАЗОВАНИЕ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-book"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="300">{{ education_block.description }}</div>
                     </div>
                 </div>
-                <!-- Header Ends --> 
+                <!-- Header Ends -->
                 <!-- Education Timeline Starts -->
-                <div class="education-timeline {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
-                    {% for record in education %}
-                    <!-- Row 1 Starts -->
-                    <div class="row education">
-                        <div class="col-md-6 col-xs-6">
-                            <div class="divider"><i class="fa fa-book"></i></div>
-                            <div class="col-left">
-                                <div class="programe">{{ record.grade }}</div>
-                                <div class="university"><strong>{{ record.universityName }}</strong><br>
-                                    {{ record.country }}
+                <div class="education-timeline {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
+                    {% for record in education_block.records.all %}
+                        <!-- Row 1 Starts -->
+                        <div class="row education">
+                            <div class="col-md-6 col-xs-6">
+                                <div class="divider"><i class="fa fa-book"></i>
+                                </div>
+                                <div class="col-left">
+                                    <div class="programe">{{ record.grade }}</div>
+                                    <div class="university">
+                                        <strong>{{ record.university_name }}</strong><br>
+                                        {{ record.country }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                <div class="col-right">
+                                    <div class="duration">{{ record.date_period }}</div>
+                                    <div class="description">{{ record.description }}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xs-6">
-                            <div class="col-right">
-                                <div class="duration">{{ record.datePeriod }}</div>
-                                <div class="description">{{ record.description }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Row 1 Ends --> 
+                        <!-- Row 1 Ends -->
                     {% endfor %}
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
-                
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn"><a href="#process"><i class="fa fa-cogs"></i> PROCESS</a></div>
-                <!-- Button Ends --> 
+
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn"><a href="#process"><i
+                            class="fa fa-cogs"></i> ПРОЦЕСС РАБОТЫ</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.EDUCATION --> 
-        <!-- PROCESS STARTS
-            ========================================================================= -->
-        {% if process %}
+    {% endif %}
+    <!-- /.EDUCATION -->
+    <!-- PROCESS STARTS
+        ========================================================================= -->
+    {% if process_block.is_active %}
         <section id="process" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">PROCESS</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-cogs"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionProcess }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ПРОЦЕСС РАБОТЫ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-cogs"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="300">{{ process_block.description }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Processes Starts -->
-                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
                     <!-- Process 1 -->
-                    {% for record in process %}
-                    <div class="col-xs-6 col-sm-4 col-md-2">
-                        <div class="items"><i class="fa {{ record.icon }}"></i><br>
-                            {{ record.name }}
+                    {% for record in process_block.records.all %}
+                        <div class="col-xs-6 col-sm-4 col-md-2">
+                            <div class="items"><i
+                                    class="fa {{ record.icon }}"></i><br>
+                                {{ record.name }}
+                            </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
                 <!-- Processes Ends -->
 
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#work-experience"><i class="fa fa-tags"></i> WORK EXPERIENCE</a></div>
-                <!-- Button Ends -->
-                {% endif %} 
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="300"><a
+                            href="#work-experience"><i class="fa fa-tags"></i>
+                        ОПЫТ РАБОТЫ</a></div>
+                    <!-- Button Ends -->
+                {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.PROCESS --> 
-        <!-- WORK EXPERIENCE STARTS
-            ========================================================================= -->
-        {% if workExperience %}
+    {% endif %}
+    <!-- /.PROCESS -->
+    <!-- WORK EXPERIENCE STARTS
+        ========================================================================= -->
+    {% if work_experience_block.is_active %}
         <section id="work-experience">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">WORK EXPERIENCE</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-tags"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionWorkExperience }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ОПЫТ РАБОТЫ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-tags"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="300">{{ work_experience_block.description }}</div>
                     </div>
                 </div>
-                <!-- Header Ends --> 
+                <!-- Header Ends -->
                 <!-- Education Timeline Starts -->
-                <div class="work-experience-timeline {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="work-experience-timeline {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
+                {% for record in work_experience_block.records.all %}
+                    {% if not forloop.counter|divisibleby:2 %}
                     <div class="row">
                         <!-- Left Column Starts -->
-                        {% for record in workExperience %}
-                        <div class="col-md-6 col-xs-6">
-                          <div class="{% if forloop.counter|divisibleby:2 %}col-left{% else %}col-right{% endif %}">
-                                <div class="arrow"></div>
-                                <div class="company-name">{{ record.companyName }}</div>
-                            	<div class="designation">{{ record.position }}</div>
-                                <div class="duration">{{ record.datePeriod }}</div>
-                                <div class="description">{{ record.description }}</div>
-                                <div class="url"><a href="#">{{ record.companyUrl }}</a></div>                                
+                    {% endif %}
+                            <div class="col-md-6 col-xs-6 col-lg-6">
+                                <div class="{% cycle 'col-left' 'col-right' %}">
+                                    <div class="arrow"></div>
+                                    <div class="company-name">{{ record.company_name }}</div>
+                                    <div class="designation">{{ record.position }}</div>
+                                    <div class="duration">{{ record.date_period }}</div>
+                                    <div class="description">{{ record.description }}</div>
+                                    <div class="url"><a
+                                            href="#">{{ record.company_url }}</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        {% endfor %}
-                        <!-- Left Column Ends --> 
+                        <!-- Left Column Ends -->
+                    {% if forloop.counter|divisibleby:2 %}
                     </div>
+                    {% endif %}
+                {% endfor %}
                 </div>
                 <!-- Education Timeline Ends -->
                 <hr>
-                
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn"><a href="#services"><i class="fa fa-heart"></i> SERVICES</a></div>
-                <!-- Button Ends --> 
+
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn"><a href="#services"><i
+                            class="fa fa-heart"></i> УСЛУГИ</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.WORK EXPERIENCE --> 
-        <!-- SERVICES STARTS
-            ========================================================================= -->
-        {% if services %}
+    {% endif %}
+    <!-- /.WORK EXPERIENCE -->
+    <!-- SERVICES STARTS
+        ========================================================================= -->
+    {% if service_block.is_active %}
         <section id="services" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">SERVICES</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-heart"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionServices }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">УСЛУГИ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-heart"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="300">{{ service_block.description }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
                 <!-- Services Carousel Starts -->
-                <div class="owl-carousel {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300" id="services-carousel">
+                <div class="owl-carousel {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300"
+                     id="services-carousel">
                     <!-- Services 1 Starts -->
-                    {% for record in service %}
-                    <div class="items">
-                        <div class="icon"><i class="fa {{ record.icon }}"></i></div>
-                        <div class="description">{{ record.description }}</div>
-                    </div>
+                    {% for record in service_block.records.all %}
+                        <div class="items">
+                            <div class="icon"><i
+                                    class="fa {{ record.icon }}"></i></div>
+                            <div class="description">{{ record.description }}</div>
+                        </div>
                     {% endfor %}
                 </div>
                 <!-- Services Carousel Starts -->
-                
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#portfolio"><i class="fa fa-thumbs-up"></i> PORTFOLIO</a></div>
-                <!-- Button Ends --> 
+
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="300"><a
+                            href="#portfolio"><i class="fa fa-thumbs-up"></i>
+                        ПОРТФОЛИО</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.SERVICES --> 
-        <!-- PORTFOLIO STARTS
-            ========================================================================= -->
-        {% if portfolio %}
+    {% endif %}
+    <!-- /.SERVICES -->
+    <!-- PORTFOLIO STARTS
+        ========================================================================= -->
+    {% if portfolio_block.is_active %}
         <section id="portfolio">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">PORTFOLIO</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-thumbs-up"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionPorfolio }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ПОРТФОЛИО
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-thumbs-up"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="300">{{ portfolio_block.description }}</div>
                     </div>
                 </div>
-                <!-- Header Ends --> 
+                <!-- Header Ends -->
                 <!-- Portfolio Nav Starts -->
-                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
+                <div class="row {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
                         <div id="options">
-                            <ul id="filters" class="option-set clearfix" data-option-key="filter">
-                                <li><a href="#filter" data-option-value="*" class="selected">ALL</a></li>
-                                {% for record in portfolioTypes %}
-                                <li><a href="#filter" data-option-value=".{{ record|cut:" "}}">{{ record }}</a></li>
+                            <ul id="filters" class="option-set clearfix"
+                                data-option-key="filter">
+                                <li><a href="#filter" data-option-value="*"
+                                       class="selected">ВСЕ</a></li>
+                                {% for record in portfolio_types %}
+                                    <li><a href="#filter"
+                                           data-option-value=".{{ record|cut:" " }}">{{ record }}</a>
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
-                </div>
-                <!-- Portfolio Nav Ends --> 
-                <!-- AJAX Portfolio Details --> 
-                <div class="portfolio-detail"></div>
-                <!-- AJAX Portfolio Details --> 
-                <!-- Portfolio Thumbs Starts -->
-                <div class="container"> 
-                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300" id="container-thumbs">
+            </div>
+            <!-- Portfolio Nav Ends -->
+            <!-- AJAX Portfolio Details -->
+            <div class="portfolio-detail"></div>
+            <!-- AJAX Portfolio Details -->
+            <!-- Portfolio Thumbs Starts -->
+            <div class="container">
+                <div class="row {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300"
+                     id="container-thumbs">
                     <!-- Portfolio Item 1 Starts -->
-                    {% for record in portfolio %}
-                    <div class="col-xs-12 col-sm-6 col-md-3 items 
-                        {% for pt in record.portfolioType %}
+                    {% for record in portfolio_block.records.all %}
+                        <div class="col-xs-12 col-sm-6 col-md-3 items
+                        {% for pt in record.portfolio_type.all %}
                             {{ pt|cut:" " }}
                         {% endfor %}
                     ">
-                        <div class="" data-project="{{ record.url }}">
-                            <a href="{{ record.url }}" class="" target="_blank">
-                                <img src="{{ record.image.url }}" class="img-responsive" alt="{{ record.image.fields.description }}">
-                                <div class="heading">{{ record.header }}</div>
-                                <div class="category">{{ record.portfolioType|join:", " }}</div>
-                            </a>
+                            <div class="" data-project="{{ record.url }}">
+                                <a href="{{ record.url }}" class="{% if not record.url %}no-follow{% endif %}"
+                                   target="_blank">
+                                   {% thumbnail record.image 400x400 as img_portfolio %}
+                                    <img src="{{ img_portfolio.url }}"
+                                         class="img-responsive">
+                                    <div class="heading">{{ record.header }}</div>
+                                    <div class="category">{{ record.portfolio_type.all|join:", " }}</div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
-                <!-- Portfolio Thumbs Ends --> 
-                
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn"><a href="#video"><i class="fa fa-play-circle-o"></i> VIDEO</a></div>
-                <!-- Button Ends --> 
+                <!-- Portfolio Thumbs Ends -->
+
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn"><a href="#video"><i
+                            class="fa fa-play-circle-o"></i> ВИДЕО</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.PORTFOLIO --> 
-        <!-- VIDEO STARTS
-            ========================================================================= -->
-        {% if commonData.video %}
+    {% endif %}
+    <!-- /.PORTFOLIO -->
+    <!-- VIDEO STARTS
+        ========================================================================= -->
+    {% if video_block.is_active %}
         <section id="video" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">VIDEO</div>
-                        {#<div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">HTML5 / SELF HOSTED VIDEO</div>#}
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ВИДЕО
+                        </div>
+                        {#<div class="description {% if settings.show_animation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">HTML5 / SELF HOSTED VIDEO</div>#}
                     </div>
                 </div>
-                <!-- Header Ends --> 
-                <!-- Contents Starts --> 
-                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
+                <!-- Header Ends -->
+                <!-- Contents Starts -->
+                <div class="row {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-12">
-                        {% if commonData.videoExternalLink %}<div class="play"><a href="http://vimeo.com/80629469" data-remote="{{ commonData.video.url }}" data-toggle="lightbox" data-gallery="mixedgallery" data-title="Pellentesque habitant morbi" data-footer="Aliquam erat volutpat"> <i class="fa fa-play-circle-o"></i></a></div>
+                        {% if video_block.video_link %}
+                            <div class="play"><a
+                                    href="http://vimeo.com/80629469"
+                                    data-remote="{{ video_block.video.url }}"
+                                    data-toggle="lightbox"
+                                    data-gallery="mixedgallery"
+                                    data-title="Pellentesque habitant morbi"
+                                    data-footer="Aliquam erat volutpat"> <i
+                                    class="fa fa-play-circle-o"></i></a></div>
                         {% endif %}
-                        {% if commonData.sugnature %}
-                        <div class="signature"><img src="{{ commonData.signature.url }}" style="max-width:100%" alt="{{ commonData.signature.fields.description }}"></div>
+                        {% if get_in_touch_block.sugnature %}
+                            {% thumbnail get_in_touch_block.sugnature 400x400 as img_signature %}
+                            <div class="signature"><img
+                                    src="{{ img_signature.url }}"
+                                    style="max-width:100%">
+                            </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
-            <!-- Contents Ends --> 
+            <!-- Contents Ends -->
             <!-- Video Playing in background Starts -->
             <div id="my-video">
                 <video autoplay loop controls muted>
-                    <source src="{{ commonData.video.url }}" type="video/mp4">
+                    <source src="{{ video_block.video.url }}" type="video/mp4">
                 </video>
             </div>
             <!-- Video Playing in background Ends -->
         </section>
-        {% endif %}
-        <!-- /.VIDEO --> 
-        <!-- TESTIMONIALS STARTS
-            ========================================================================= -->
-        {% if testimonials %}
+    {% endif %}
+    <!-- /.VIDEO -->
+    <!-- TESTIMONIALS STARTS
+        ========================================================================= -->
+    {% if testimonials_block.is_active %}
         <section id="testimonials">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">TESTIMONIALS</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-quote-left"></i></h1>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">РЕКОМЕНДАЦИИ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="300"><i
+                                class="fa fa-quote-left"></i></h1>
                     </div>
                 </div>
                 <!-- Header Ends -->
-                <!-- Testimonial Carousel Starts --> 
-                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
+                <!-- Testimonial Carousel Starts -->
+                <div class="row {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="owl-carousel" id="testimonials-carousel">
                             <!-- Item 1 Starts-->
-                            {% for record in testimonials %}
-                            <div class="items">
-                                <div class="description">{{ record.text | safe }}</div>
-                                <div class="emp-name">- {{ record.name }} - </div>
-                                <div class="company-name">{{ record.companyName }}</div>
-                            </div>
+                            {% for record in testimonials_block.records.all %}
+                                <div class="items">
+                                    <div class="description">{{ record.text | safe }}</div>
+                                    <div class="emp-name">- {{ record.name }}
+                                        -
+                                    </div>
+                                    <div class="company-name">{{ record.company_name }}</div>
+                                </div>
                             {% endfor %}
-                            <!-- Item 1 Ends--> 
+                            <!-- Item 1 Ends-->
                         </div>
                     </div>
                 </div>
-                <!-- Testimonial Carousel Ends --> 
-                
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn"><a href="#awards"><i class="fa fa-shield"></i> AWARDS</a></div>
-                <!-- Button Ends --> 
+                <!-- Testimonial Carousel Ends -->
+
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn"><a href="#awards"><i
+                            class="fa fa-shield"></i> ДОСТИЖЕНИЯ</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.TESTIMONIALS --> 
-        <!-- AWARDS STARTS
-            ========================================================================= -->
-        {% if awards %}
+    {% endif %}
+    <!-- /.TESTIMONIALS -->
+    <!-- AWARDS STARTS
+        ========================================================================= -->
+    {% if awards_block.is_active %}
         <section id="awards" data-speed="10" data-type="background">
             <div class="container">
                 <!-- Header Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">AWARDS & CERTIFICATES</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-shield"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="1200">{{ commonData.descriptionAwards | safe }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ДОСТИЖЕНИЯ и СЕРТИФИКАТЫ
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="700"><i
+                                class="fa fa-shield"></i></h1>
+                        <div class="description {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeIn"
+                             data-animation-delay="1200">{{ awards_block.description | safe }}</div>
                     </div>
                 </div>
                 <!-- Header Ends -->
-                <!-- Awards Carousel Starts --> 
-                <div class="owl-carousel {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300" id="awards-carousel">
+                <!-- Awards Carousel Starts -->
+                <div class="owl-carousel {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="300"
+                     id="awards-carousel">
                     <!-- Item 1 Starts -->
-                    {% for record in awards %}
-                    <div class="items">
-                        <div class="icon"><i class="fa fa-shield"></i></div>
-                        <div class="title">{{ record.title }}</div>
-                        <div class="companyname">{{ record.companyName }}</div>
-                        <div class="year">{{ record.date }}</div>
-                    </div>
+                    {% for record in awards_block.records.all %}
+                        <div class="items">
+                            <div class="icon"><i class="fa fa-shield"></i></div>
+                            <div class="title">{{ record.title }}</div>
+                            <div class="companyname">{{ record.company_name }}</div>
+                            <div class="year">{{ record.date }}</div>
+                        </div>
                     {% endfor %}
                     <!-- Item 1 Ends -->
                 </div>
                 <!-- Awards Carousel Ends -->
-                
-                {% if commonData.showSectionButtons %}
-                <!-- Button Starts -->
-                <div class="link-btn {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><a href="#contact"><i class="fa fa-map-marker"></i> CONTACT</a></div>
-                <!-- Button Ends --> 
+
+                {% if settings.show_section_buttons %}
+                    <!-- Button Starts -->
+                    <div class="link-btn {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="300"><a
+                            href="#contact"><i class="fa fa-map-marker"></i>
+                        КОНТАКТЫ</a></div>
+                    <!-- Button Ends -->
                 {% endif %}
             </div>
         </section>
-        {% endif %}
-        <!-- /.AWARDS --> 
-        <!-- DOWNLOAD CV STARTS
-            ========================================================================= -->
-        <section id="download-cv">
-            <div class="container">
-                <div class="row">
-                    <!-- Description Starts -->
-                    <div class="col-md-8 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInLeft" data-animation-delay="200">
-                        <div class="description">{{ commonData.descriptionDownloadCv}}</div>
+    {% endif %}
+    <!-- /.AWARDS -->
+    <!-- DOWNLOAD CV STARTS
+    {% if cv_block.is_active %}
+        ========================================================================= -->
+    <section id="download-cv">
+        <div class="container">
+            <div class="row">
+                <!-- Description Starts -->
+                <div class="col-md-8 {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInLeft" data-animation-delay="200">
+                    <div class="description">{{ cv_block.description }}</div>
+                </div>
+                <!-- Description Ends -->
+                <!-- Download CV Button Starts -->
+                <div class="col-md-4 {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInRight" data-animation-delay="300">
+                    <div class="link-btn-2"><a href="{{ cv_block.cv.url }}"><i
+                            class="fa fa-download"></i> РЕЗЮМЕ</a></div>
+                </div>
+                <!-- Download CV Button Ends -->
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    <!-- /.DOWNLOAD CV -->
+    <!-- CONTACT STARTS
+        ========================================================================= -->
+    {% if get_in_touch_block.is_active %}
+    <section id="contact">
+        <div class="container">
+            <!-- Header Starts -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 section-heading">
+                    <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="200">
+                        КОНТАКТЫ
                     </div>
-                    <!-- Description Ends -->
-                    <!-- Download CV Button Starts -->
-                    <div class="col-md-4 {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInRight" data-animation-delay="300">
-                        <div class="link-btn-2"><a href=""><i class="fa fa-download"></i> GET CV</a></div>
-                    </div>
-                    <!-- Download CV Button Ends -->
+                    <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                        data-animation="fadeInUp" data-animation-delay="300"><i
+                            class="fa fa-map-marker"></i></h1>
                 </div>
             </div>
-        </section>
-        <!-- /.DOWNLOAD CV --> 
-        <!-- CONTACT STARTS
-            ========================================================================= -->
-        <section id="contact">
-            <div class="container">
-                <!-- Header Starts -->
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">CONTACT</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-map-marker"></i></h1>
-                    </div>
+            <!-- Header Ends -->
+            <!-- Contact Info Starts -->
+            <div class="row contact-info {% if settings.show_animation %}animated{% endif %}"
+                 data-animation="fadeInUp" data-animation-delay="300">
+                <div class="col-md-12">
+                    <div class="address">{{ about_me_block.address | safe }}</div>
+                    <div class="phone">{{ about_me_block.phone }}</div>
+                    <div class="email">{{ about_me_block.email }}</div>
+                    <div class="web">{{ about_me_block.skype }}</div>
                 </div>
-                <!-- Header Ends -->
-                <!-- Contact Info Starts -->
-                <div class="row contact-info {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
-                    <div class="col-md-12">
-                        <div class="address">{{ commonData.aboutAddress | safe }}</div>
-                        <div class="phone">{{ commonData.aboutPhone }}</div>
-                        <div class="email">{{ commonData.aboutEmail }}</div>
-                        <div class="web">{{ commonData.aboutWebsite }}</div>
-                    </div>
-                </div>
-                <!-- Contact Info Ends -->
-                <hr>
-                <!-- Contact Form Starts -->
-                <div class="contact-form">
-                    <!-- Heading Starts -->
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 section-heading">
-                            <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">DROP ME A LINE</div>
-                            <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="700"><i class="fa fa-envelope"></i></h1>
-                        </div>
-                    </div>
-                    <!-- Heading Ends -->
-                    <!-- Form Starts -->
-                    <div class="row form {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="1200">
-                        <div class="col-md-6 col-md-offset-3">
-                            <form action='process.php' method='post' name='ContactForm' id='ContactForm' >
-                                <div class="input-group"> <span class="input-group-addon">@</span>
-                                    <input type="text" name="name" class="form-control" placeholder="Name *">
-                                </div>
-                                <div class="input-group"> <span class="input-group-addon">@</span>
-                                    <input type="text" name="email" class="form-control" placeholder="Email *">
-                                </div>
-                                <div class="input-group"> <span class="input-group-addon">@</span>
-                                    <input type="text" name="website" class="form-control" placeholder="Subject">
-                                </div>
-                                <div class="input-group"> <span class="input-group-addon">@</span>
-                                    <textarea name="comment" class="form-control" placeholder="Comment *" rows="4"></textarea>
-                                </div>
-                                <div class="input-group form-buttons"> <span class="input-group-btn">
-                                    <button class="btn btn-default" type='submit' value='Submit' name='submitf' id="submitf">SAY HELLO</button>
-                                    </span> 
-                                </div>
-                                <div id='message_post'></div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Form Ends -->
-                </div>
-                <!-- Contact Form Ends -->
             </div>
-        </section>
-        <!-- /.CONTACT --> 
-        <!-- SOCIAL MEDIA STARTS
-            ========================================================================= -->
-        <section id="social-media">
-            <div class="container">
-                <!-- Header Starts -->
+            <!-- Contact Info Ends -->
+            <hr>
+            <!-- Contact Form Starts -->
+            <div class="contact-form">
+                <!-- Heading Starts -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 section-heading">
-                        <div class="heading {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="200">GET IN TOUCH</div>
-                        <h1 class="icon-line {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300"><i class="fa fa-comments"></i></h1>
-                        <div class="description {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeIn" data-animation-delay="300">{{ commonData.descriptionSocialMedia }}</div>
+                        <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                             data-animation="fadeInUp"
+                             data-animation-delay="200">ЕСТЬ ВОПРОСЫ? НАПИШИТЕ!
+                        </div>
+                        <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                            data-animation="fadeInUp"
+                            data-animation-delay="700"><i
+                                class="fa fa-envelope"></i></h1>
                     </div>
                 </div>
-                <!-- Header Ends -->
-                <!-- Social Icons Starts -->
-                <div class="row {% if commonData.showAnimation %}animated{% endif %}" data-animation="fadeInUp" data-animation-delay="300">
-                    <div class="col-md-12 social-icons">
-                        <ul>
-                            {% if commonData.socialFacebook %}
-                                <li><a href="{{ commonData.socialFacebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            {% endif %}
-                            {% if commonData.socialLinkedIn %}
-                                <li><a href="{{ commonData.socialLinkedIn }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                            {% endif %}
-                            {% if commonData.socialVk %}
-                                <li><a href="{{ commonData.socialVk }}" target="_blank"><i class="fa fa-vk"></i></a></li>
-                            {% endif %}
-                            {% if commonData.socialGooglePlus %}
-                                <li><a href="{{ commonData.socialGooglePlus }}" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                            {% endif %}
-                        </ul>
+                <!-- Heading Ends -->
+                <!-- Form Starts -->
+                <div class="row form {% if settings.show_animation %}animated{% endif %}"
+                     data-animation="fadeInUp" data-animation-delay="1200">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form action='{% url 'feedback' %}' method='post'
+                              name='ContactForm' id='ContactForm'>
+                            <div class="input-group"><span
+                                    class="input-group-addon">@</span>
+                                <input type="text" name="name"
+                                       class="form-control"
+                                       placeholder="Имя *">
+                            </div>
+                            <div class="input-group"><span
+                                    class="input-group-addon">@</span>
+                                <input type="text" name="email"
+                                       class="form-control"
+                                       placeholder="Email *">
+                            </div>
+                            <div class="input-group"><span
+                                    class="input-group-addon">@</span>
+                                <input type="text" name="website"
+                                       class="form-control"
+                                       placeholder="Тема">
+                            </div>
+                            <div class="input-group"><span
+                                    class="input-group-addon">@</span>
+                                <textarea name="comment" class="form-control"
+                                          placeholder="Сообщение *"
+                                          rows="4"></textarea>
+                            </div>
+                            <div class="input-group form-buttons"> <span
+                                    class="input-group-btn">
+                                    <button class="btn btn-default"
+                                            type='submit' value='Submit'
+                                            name='submitf' id="submitf">ОТПРАВИТЬ</button>
+                                    </span>
+                            </div>
+                            <div id='message_post'></div>
+                        </form>
                     </div>
                 </div>
-                <!-- Social Icons Ends -->
+                <!-- Form Ends -->
             </div>
-        </section>
-        <!-- /.SOCIAL MEDIA --> 
+            <!-- Contact Form Ends -->
+        </div>
+    </section>
+    {% endif %}
+    <!-- /.CONTACT -->
+    <!-- SOCIAL MEDIA STARTS
+        ========================================================================= -->
+    <section id="social-media">
+        <div class="container">
+            <!-- Header Starts -->
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 section-heading">
+                    <div class="heading {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeInUp" data-animation-delay="200">
+                        СВЯЖИТЕСЬ СО МНОЙ
+                    </div>
+                    <h1 class="icon-line {% if settings.show_animation %}animated{% endif %}"
+                        data-animation="fadeInUp" data-animation-delay="300"><i
+                            class="fa fa-comments"></i></h1>
+                    <div class="description {% if settings.show_animation %}animated{% endif %}"
+                         data-animation="fadeIn"
+                         data-animation-delay="300">{{ get_in_touch_block.description }}</div>
+                </div>
+            </div>
+            <!-- Header Ends -->
+            <!-- Social Icons Starts -->
+            <div class="row {% if settings.show_animation %}animated{% endif %}"
+                 data-animation="fadeInUp" data-animation-delay="300">
+                <div class="col-md-12 social-icons">
+                    <ul>
+                        {% for record in get_in_touch_block.records.all %}
+                            <li><a href="{{ record.link }}"
+                                   target="_blank"><i
+                                    class="fa {{ record.get_icon }}"></i></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Social Icons Ends -->
+        </div>
+    </section>
+    <!-- /.SOCIAL MEDIA -->
 {% endblock %}
 
 {% block footer_scripts %}
-        <!-- Animation --> 
-        <script type="text/javascript" src="{% static 'main/js/animation/jquery.appear.js' %}"></script> 
-        <!-- AJAX Contact Form --> 
-        <script type="text/javascript" src="{% static 'main/js/contact/contact-form.js' %}"></script> 
-        <!-- Lightbox --> 
-        <script src="{% static 'main/lightbox/ekko-lightbox.js' %}"></script> 
-        <!-- Isotope --> 
-        <script src="{% static 'main/js/isotope/jquery.isotope.min.js' %}"></script> 
-        <script src="{% static 'main/js/isotope/custom-isotope.js' %}"></script> 
-        <!-- Slider Revolution 4.x Scripts --> 
-        <script type="text/javascript" src="{% static 'main/rs-plugin/js/jquery.themepunch.plugins.min.js' %}"></script> 
-        <script type="text/javascript" src="{% static 'main/rs-plugin/js/jquery.themepunch.revolution.js' %}"></script> 
-        <script>
-            var revapi;
-            		jQuery(document).ready(function() {
-            
-            			   revapi = jQuery('.tp-banner').revolution(
-            				{
-            					delay:15000,
-            					startwidth:1170,
-            					startheight:500,
-            					hideThumbs:10,
-            					fullWidth:"off",
-            					fullScreen:"on",
-            					fullScreenOffsetContainer: "",
-            					hideCaptionAtLimit:400            					
-            				});
-            		});	//ready	
-        </script> 
-        <!-- Owl Carousel --> 
-        <script src="{% static 'main/owl-carousel/owl-carousel/owl.carousel.js' %}"></script> 
-        <!-- Custom --> 
-        <script src="{% static 'main/js/custom.js' %}"></script> 
-        <!-- Parallex --> 
-        <script src="{% static 'main/js/parallex/script.js' %}"></script> 
-        <!-- ScrollTo --> 
-        <script src="{% static 'main/js/nav/jquery.scrollTo.js' %}"></script> 
-        <script src="{% static 'main/js/nav/jquery.nav.js' %}"></script> 
-        <!-- Sticky --> 
-        <script type="text/javascript" src="{% static 'main/js/sticky/jquery.sticky.js' %}"></script> 
-        <!-- Donut Chart --> 
-        <script type="text/javascript" src="{% static 'main/js/progress-bars/jquery.donutchart.js' %}"></script> 
-        <script>
-        	{% for record in skill %}
-                $("#donutchart{{ record.index }}").donutchart("animate");
-            {% endfor %}
-        </script>
-        <!-- Retina -->
-        <script type="text/javascript" src="{% static 'main/js/retina/retina.js' %}"></script>
-        <script type="text/javascript" src="{% static 'main/js/jquery.fitvids.js' %}"></script>
+    <script>
+    <!-- Animation -->
+        var revapi;
+        jQuery(document).ready(function() {
+            revapi = jQuery('.tp-banner').revolution({
+                delay:15000,
+                startwidth:1170,
+                startheight:500,
+                hideThumbs:10,
+                fullWidth:"off",
+                fullScreen:"on",
+                fullScreenOffsetContainer: "",
+                hideCaptionAtLimit:400
+            });
+
+            $('.no-follow').on('click', function(e){
+                e.preventDefault();
+            });
+
+        {% for record in skill_block.records.all %}
+            $("#donutchart{{ record.index }}").donutchart("animate");
+        {% endfor %}
+        });//ready
+    </script>
+    <!-- Owl Carousel -->
 {% endblock %}
 
     

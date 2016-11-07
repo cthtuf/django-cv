@@ -23,22 +23,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4v25^y9db^8uxm5_v%4-0uswnowgu92!d#&8%u*(b%on6@nngf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'debug_toolbar',
     'main',
+    'easy_thumbnails',
+    'pipeline',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -61,15 +68,19 @@ TEMPLATES = [
         'DIRS': [
             #os.path.join(BASE_DIR, 'main/templates'),
         ],
-        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.static',
+                # 'django.core.context_processors.static',
             ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader',
+            ]
         },
     },
 ]
@@ -86,6 +97,18 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+CACHES = {}
+if DEBUG:
+    CACHES['default'] = {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    }
+else:
+    CACHES['default'] = {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/2',
+    }
+
 
 
 # Password validation
@@ -110,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -123,13 +146,74 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files', 'media')
+MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'files', 'static')
 STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
 #STATICFILES_DIRS = ( os.path.join('static'), )
 
-#STATICFILES_FINDERS = [
-#    "django.contrib.staticfiles.finders.FileSystemFinder",
-#    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
-#]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+]
 
-INTERNAL_IPS = '80.91.22.174'
+PIPELINE = {
+    'PIPELINE_ENABLED': not DEBUG,
+    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
+    'STYLESHEETS': {
+        'styles': {
+            'source_filenames': (
+                'main/css/bootstrap/bootstrap.min.css',
+                'main/css/animations/animate.min.css',
+                #'fonts/font-awesome/css/font-awesome.css',
+                'main/fonts/font-awesome/css/font-awesome.min.css',
+                'main/rs-plugin/css/settings.css',
+                'main/rs-plugin/css/KenBurns.css',
+                'main/css/stylesheet.css',
+                'main/css/hide-show.css',
+                'main/owl-carousel/owl-carousel/owl.carousel.css',
+                'main/owl-carousel/owl-carousel/owl.theme.css',
+                'main/css/portfolio/isotope-style.css',
+                'main/lightbox/ekko-lightbox.css',
+                'main/css/colors/green.css',
+            ),
+            'output_filename': 'main/css/all_styles.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'scripts': {
+            'source_filenames': (
+                'main/js/jquery-1.11.2.js',
+                'main/js/bootstrap.min.js',
+                'main/js/animation/jquery.appear.js',
+                'main/js/contact/contact-form.js',
+                'main/lightbox/ekko-lightbox.js',
+                'main/js/isotope/jquery.isotope.min.js',
+                'main/js/isotope/custom-isotope.js',
+                'main/rs-plugin/js/jquery.themepunch.plugins.min.js',
+                'main/rs-plugin/js/jquery.themepunch.revolution.js',
+                'main/owl-carousel/owl-carousel/owl.carousel.js',
+                'main/js/custom.js',
+                'main/js/parallex/script.js',
+                'main/js/nav/jquery.scrollTo.js',
+                'main/js/nav/jquery.nav.js',
+                'main/js/sticky/jquery.sticky.js',
+                'main/js/progress-bars/jquery.donutchart.js',
+                'main/js/retina/retina.js',
+                'main/js/jquery.fitvids.js',
+            ),
+            'output_filename': 'main/js/all_scripts.js',
+        }
+    }
+}
+
+INTERNAL_IPS = ('127.0.0.1', )
