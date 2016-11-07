@@ -98,12 +98,17 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    'default': {
+CACHES = {}
+if DEBUG:
+    CACHES['default'] = {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    }
+else:
+    CACHES['default'] = {
         'BACKEND': 'redis_cache.RedisCache',
         'LOCATION': 'redis://127.0.0.1:6379/2',
-    },
-}
+    }
+
 
 
 # Password validation
