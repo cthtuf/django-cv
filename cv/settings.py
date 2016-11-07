@@ -181,7 +181,7 @@ PIPELINE = {
                 'main/lightbox/ekko-lightbox.css',
                 'main/css/colors/green.css',
             ),
-            'output_filename': 'main/css/styles.css',
+            'output_filename': 'main/css/all_styles.css',
         },
     },
     'JAVASCRIPT': {
@@ -206,7 +206,7 @@ PIPELINE = {
                 'main/js/retina/retina.js',
                 'main/js/jquery.fitvids.js',
             ),
-            'output_filename': 'main/js/scripts.js',
+            'output_filename': 'main/js/all_scripts.js',
         }
     }
 }
