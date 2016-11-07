@@ -90,3 +90,5 @@ ENV/
 
 #SQLite database
 *.sqlite3
+
+.idea/
